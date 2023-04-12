@@ -9,7 +9,9 @@ exports.up = function (knex) {
     table.string('pronouns')
     table.text('description')
     table.text('inventory').defaultTo('')
+    table.text('location').defaultTo('Town Square')
     table.text('progress').defaultTo('')
+    table.integer('gold').defaultTo(0)
   })
 }
 
