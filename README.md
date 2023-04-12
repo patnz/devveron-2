@@ -20,5 +20,5 @@
 ## Redux Store
 
 | Inventory | `string[]` |
-| Messages | `{from: string, messages: string}[]` |
+| Messages | `{from: string, message: string}[]` |
 | Nearby PCs | `{name:string, pronouns:string, description:string}[]` |
