@@ -8,6 +8,6 @@ export interface PlayerInfo {
 export interface Player extends PlayerInfo {
   inventory: string[]
   location: string
-  progress: string[]
+  progress: any
   gold: number
 }
