@@ -1,10 +1,7 @@
-export interface PublicPlayerInfo {
+export interface PlayerInfo {
   char_name: string
   pronouns: string
   description: string
-}
-
-export interface PlayerInfo extends PublicPlayerInfo {
   user: string
 }
 
