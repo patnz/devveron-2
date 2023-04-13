@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
     <Auth0Provider
       domain="devverontwooh.au.auth0.com"
-      clientId="O0cNH15oH17Vbtw1PG2PeaY9U5gjPkyb"
+      clientId="O0cNH15oHl7Vbtw1PG2PeaY9U5gjPkyb"
       redirectUri={window.location.origin} //type issue
       audience="https://devverontwooh/api"
     >
