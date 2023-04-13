@@ -18,3 +18,7 @@ export function IfNotAuthenticated(props: Props) {
   const { children } = props
   return !useIsAuthenticated() ? <>{children}</> : null
 }
+
+//Pat! have set up some of the authO credentialling from the AuthO side.
+//HMU when you're ready so we can integrate things together
+//Sacha
