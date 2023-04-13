@@ -1,4 +1,4 @@
-import { Nav } from './Login'
+import { Nav } from './Nav'
 
 function App() {
   return (
