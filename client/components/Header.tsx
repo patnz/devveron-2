@@ -1,0 +1,11 @@
+function Header() {
+  return (
+    <>
+      <header className="header">
+        <h1>Devvron 2.0</h1>
+      </header>
+    </>
+  )
+}
+
+export default Header
