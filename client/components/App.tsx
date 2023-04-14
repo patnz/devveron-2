@@ -10,6 +10,9 @@ import NewPlayer from './NewPlayer'
 import Frame from './Frame'
 import TownSquare from './TownSquare'
 import Chat from './Chat'
+import Tavern from './Tavern'
+import Salon from './Salon'
+import EditPlayer from './EditPlayer'
 
 const url = 'http://localhost:3000'
 
@@ -49,8 +52,11 @@ function App() {
         <Routes>
           <Route path="" element={<p>Loading...</p>} />
           <Route path="/create" element={<NewPlayer socket={socket} />} />
+          {/* <Route path="/update" element={<EditPlayer />} /> */}
           <Route path="/loc/" element={<Frame socket={socket} />}>
             <Route path="town-square" element={<TownSquare />} />
+            <Route path="tavern" element={<Tavern />} />
+            <Route path="salon" element={<Salon />} />
           </Route>
         </Routes>
       </IfAuthenticated>
