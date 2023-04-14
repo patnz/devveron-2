@@ -9,6 +9,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 import NewPlayer from './NewPlayer'
 import Frame from './Frame'
 import TownSquare from './TownSquare'
+import Chat from './Chat'
 
 const url = 'http://localhost:3000'
 
@@ -26,6 +27,8 @@ function App() {
     }
   }, [user])
 
+  // socket on player logout send player obj
+
   socket.on('send player data', (player: Player) => {
     setPlayer(player)
     console.log('got player data, sending to location...')
@@ -42,10 +45,11 @@ function App() {
         <LoginPage />
       </IfNotAuthenticated>
       <IfAuthenticated>
+        {/* <Chat socket={socket} /> */}
         <Routes>
           <Route path="" element={<p>Loading...</p>} />
           <Route path="/create" element={<NewPlayer socket={socket} />} />
-          <Route path="/loc/" element={<Frame />}>
+          <Route path="/loc/" element={<Frame socket={socket} />}>
             <Route path="town-square" element={<TownSquare />} />
           </Route>
         </Routes>

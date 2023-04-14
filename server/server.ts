@@ -19,8 +19,8 @@ io.on('connection', (socket: any) => {
 
   loginHandlers(io, socket)
 
-  socket.on('send message', (msg: Message) => {
-    io.emit('new message', msg)
+  socket.on('send message', (msg: string) => {
+    io.emit('new message', { name: socket.info.name, message: msg })
   })
 })
 

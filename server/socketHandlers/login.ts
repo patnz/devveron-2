@@ -8,7 +8,13 @@ export function loginHandlers(io: any, socket: any) {
       .then((player) => {
         if (player) {
           console.log('found')
+          socket.info = {
+            name: player.char_name,
+            pronouns: player.pronouns,
+            description: player.description,
+          }
           io.to(socket.id).emit('send player data', player)
+          // io.broadcast to tell other users someone's logged on also on char creation
         } else {
           console.log('sending to create a character')
           io.to(socket.id).emit('do character creation')
