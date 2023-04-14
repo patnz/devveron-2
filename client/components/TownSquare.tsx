@@ -1,4 +1,15 @@
-function TownSquare() {
+import { Player } from '../../models/player'
+
+interface Props {
+  player: Player
+  setPlayer: Function
+}
+
+function TownSquare({ player, setPlayer }: Props) {
+  const goTavern = () => {
+    player.location = 'tavern'
+    setPlayer(player)
+  }
   return (
     <>
       <div className="location">
@@ -13,10 +24,15 @@ function TownSquare() {
       <div className="entry">
         <p>
           You see a group of dimly lit buildings around a central fountain. You
-          can see a [Tavern], a [Salon], a [Church] and a [Item Shop] among the
-          buildings. There is a [Road] off to the side which leads down to the
-          Docks and Slum area, and behind you is the road leading [Out of Town]
+          can see a{' '}
+          <span color="red" onClick={goTavern}>
+            Tavern
+          </span>
+          , a [Salon], a [Church] and a [Item Shop] among the buildings. There
+          is a [Road] off to the side which leads down to the Docks and Slum
+          area, and behind you is the road leading [Out of Town]
         </p>
+        <p>{player.location}</p>
       </div>
     </>
   )
