@@ -19,8 +19,13 @@ export default function Chat({ socket }: Props) {
     setMessage('')
   }
 
-  // socket.on('', () => newMessage(''))
-  // socket.on('', () => newMessage(''))
+  socket.on('player logged out', ({ name }) =>
+    newMessage({ message: `${name} has logged out` })
+  )
+
+  socket.on('player logged in', ({ name }) =>
+    newMessage({ message: `${name} has logged in` })
+  )
 
   socket.on('new message', (msg) => newMessage(msg))
 
@@ -30,7 +35,7 @@ export default function Chat({ socket }: Props) {
         <h1>Devveron 2.0 Chat</h1>
         {messages.map(({ name, message }, i) => (
           <p key={i}>
-            <span>{name}:</span>
+            {name && <span>{name}: </span>}
             {message}
           </p>
         ))}

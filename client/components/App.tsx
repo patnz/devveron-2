@@ -3,13 +3,12 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import LoginPage from './LoginPage'
 import { Nav } from './Nav'
 import io from 'socket.io-client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { Player } from '../../models/player'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Route, Routes, useNavigate, useBeforeUnload } from 'react-router-dom'
 import NewPlayer from './NewPlayer'
 import Frame from './Frame'
 import TownSquare from './TownSquare'
-import Chat from './Chat'
 import Tavern from './Tavern'
 import Salon from './Salon'
 import EditPlayer from './EditPlayer'
@@ -19,9 +18,21 @@ const url = 'http://localhost:3000'
 const socket = io(url)
 
 function App() {
-  const { user } = useAuth0()
+  const { user, isAuthenticated } = useAuth0()
   const [player, setPlayer] = useState({} as Player)
   const nav = useNavigate()
+
+  const loggingOut = useCallback(() => {
+    socket.emit('logging out', player)
+  }, [player])
+
+  useBeforeUnload(
+    useCallback(() => {
+      if (isAuthenticated) {
+        loggingOut()
+      }
+    }, [loggingOut, isAuthenticated])
+  )
 
   useEffect(() => {
     console.log(user)
@@ -43,7 +54,7 @@ function App() {
 
   return (
     <>
-      <Nav />
+      <Nav loggingOut={loggingOut} />
       <IfNotAuthenticated>
         <LoginPage />
       </IfNotAuthenticated>

@@ -42,15 +42,20 @@ export function getPlayer(
     })
 }
 
-export function getPlayerProfiles(
-  users: string[],
-  db = connection
-): Promise<PlayerInfo[]> {
-  return db('players')
-    .select('user', 'char_name', 'pronouns', 'description')
-    .whereIn('user', users)
-}
+// export function getPlayerProfiles(
+//   users: string[],
+//   db = connection
+// ): Promise<PlayerInfo[]> {
+//   return db('players')
+//     .select('user', 'char_name', 'pronouns', 'description')
+//     .whereIn('user', users)
+// }
 
-export function updatePlayer(player: Player | PlayerInfo, db = connection) {
-  return db('players').update(player).where('user', player.user)
+export function updatePlayer(player: Player, db = connection) {
+  const dbPlayer = {
+    ...player,
+    inventory: JSON.stringify(player.inventory),
+    progress: JSON.stringify(player.progress),
+  }
+  return db('players').update(dbPlayer).where('user', dbPlayer.user)
 }
