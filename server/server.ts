@@ -8,7 +8,7 @@ const sockets = require('socket.io')
 
 const expressServer = express()
 
-expressServer.use(express.json())
+// expressServer.use(express.json())
 expressServer.use(express.static(path.join(__dirname, 'public')))
 
 const fullServer = http.Server(expressServer)

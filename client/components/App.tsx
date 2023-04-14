@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     console.log(user)
     if (user) {
-      socket.emit('get player data', user.pub)
+      socket.emit('get player data', user.sub)
     }
   }, [user])
 
