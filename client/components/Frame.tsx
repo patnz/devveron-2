@@ -13,7 +13,7 @@ export default function Frame({ socket }: Props) {
     <>
       <Header />
       <Outlet />
-      <PlayersHere />
+      <PlayersHere socket={socket} />
       <Chat socket={socket} />
     </>
   )

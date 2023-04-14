@@ -14,7 +14,10 @@ export function loginHandlers(io: any, socket: any) {
             description: player.description,
           }
           io.to(socket.id).emit('send player data', player)
-          socket.broadcast.emit('player logged in', socket.info)
+          socket.broadcast.emit('player logged in', {
+            id: socket.id,
+            ...socket.info,
+          })
           // io.broadcast to tell other users someone's logged on also on char creation
         } else {
           console.log('sending to create a character')
