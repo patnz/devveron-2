@@ -5,7 +5,9 @@
   "repository": "https://github.com/dev-academy-challenges/my-fullstack-collection-scss",
   "main": "server/index.ts",
   "scripts": {
-    "build": "npm run webpack -- --mode production",
+    "build": "run-p build:client build:server",
+    "build:client": "npm run webpack -- --mode production",
+    "build:server": "npm run knex -- migrate:latest",
     "start": "ts-node server/index.ts",
     "test": "jest",
     "test:watch": "jest --noStackTrace --watchAll",
@@ -97,6 +99,7 @@
     "knex": "^2.3.0",
     "pg": "^8.8.0",
     "socket.io": "^4.6.1",
+    "socket.io-client": "^4.6.1",
     "sqlite3": "^5.1.2",
     "superagent": "7.1.1",
     "ts-node": "^10.9.1"

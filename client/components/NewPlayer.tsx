@@ -1,8 +1,15 @@
+import { useAuth0 } from '@auth0/auth0-react'
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { Socket } from 'socket.io-client'
 import { useAppDispatch } from '../hooks/redux'
 
-function NewPlayer() {
-  const dispatch = useAppDispatch()
+interface Props {
+  socket: Socket
+}
+
+function NewPlayer({ socket }: Props) {
+  const { user } = useAuth0()
+  // const dispatch = useAppDispatch()
   // Note: user is the OAuth key pulled from OAuth, and won't need to change.
   const [addFormData, setAddFormData] = useState({
     char_name: 'Bob Jones',
@@ -10,9 +17,15 @@ function NewPlayer() {
     description: 'A Normal Human',
   })
 
-  const clickHandler = (e: FormEvent) => {
+  const submitHandler = (e: FormEvent) => {
     e.preventDefault()
     // Add call to action for Adding the Player here. Don't forget to pass the OAuth ID as user!
+    if (user) {
+      socket.emit('create character', { user: user.sub, ...addFormData })
+    } else {
+      // it shouldn't be possible to see this component w/out being logged in, but we should probably signal something here
+      alert('You are not logged in, how did you get here?')
+    }
   }
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +36,7 @@ function NewPlayer() {
     <>
       <div className="new-player">
         <h2>Please create your character</h2>
-        <form onSubmit={clickHandler} className="new-player-form">
+        <form onSubmit={submitHandler} className="new-player-form">
           <table>
             <tbody>
               <tr>
