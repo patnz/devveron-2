@@ -23,8 +23,8 @@ function NewPlayer({ socket }: Props) {
     if (user) {
       socket.emit('create character', { user: user.sub, ...addFormData })
     } else {
-      socket.emit('error', 'You are not logged in')
-      throw Error('Unauthenticated user bypassed login')
+      // it shouldn't be possible to see this component w/out being logged in, but we should probably signal something here
+      alert('You are not logged in, how did you get here?')
     }
   }
 
