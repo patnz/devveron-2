@@ -3,21 +3,36 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import LoginPage from './LoginPage'
 import { Nav } from './Nav'
 import io from 'socket.io-client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { Player } from '../../models/player'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Route, Routes, useNavigate, useBeforeUnload } from 'react-router-dom'
 import NewPlayer from './NewPlayer'
 import Frame from './Frame'
 import TownSquare from './TownSquare'
+import Tavern from './Tavern'
+import Salon from './Salon'
+import EditPlayer from './EditPlayer'
 
 const url = 'http://localhost:3000'
 
 const socket = io(url)
 
 function App() {
-  const { user } = useAuth0()
+  const { user, isAuthenticated } = useAuth0()
   const [player, setPlayer] = useState({} as Player)
   const nav = useNavigate()
+
+  const loggingOut = useCallback(() => {
+    socket.emit('logging out', player)
+  }, [player])
+
+  useBeforeUnload(
+    useCallback(() => {
+      if (isAuthenticated) {
+        loggingOut()
+      }
+    }, [loggingOut, isAuthenticated])
+  )
 
   useEffect(() => {
     console.log(user)
@@ -25,6 +40,8 @@ function App() {
       socket.emit('get player data', user.sub)
     }
   }, [user])
+
+  // socket on player logout send player obj
 
   socket.on('send player data', (player: Player) => {
     setPlayer(player)
@@ -37,16 +54,23 @@ function App() {
 
   return (
     <>
-      <Nav />
+      <Nav loggingOut={loggingOut} />
       <IfNotAuthenticated>
         <LoginPage />
       </IfNotAuthenticated>
       <IfAuthenticated>
+        {/* <Chat socket={socket} /> */}
         <Routes>
           <Route path="" element={<p>Loading...</p>} />
           <Route path="/create" element={<NewPlayer socket={socket} />} />
-          <Route path="/loc/" element={<Frame />}>
-            <Route path="town-square" element={<TownSquare />} />
+          {/* <Route path="/update" element={<EditPlayer />} /> */}
+          <Route path="/loc/" element={<Frame socket={socket} />}>
+            <Route
+              path="town-square"
+              element={<TownSquare player={player} setPlayer={setPlayer} />}
+            />
+            <Route path="tavern" element={<Tavern />} />
+            <Route path="salon" element={<Salon />} />
           </Route>
         </Routes>
       </IfAuthenticated>
