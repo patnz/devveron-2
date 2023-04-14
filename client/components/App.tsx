@@ -54,7 +54,10 @@ function App() {
           <Route path="/create" element={<NewPlayer socket={socket} />} />
           {/* <Route path="/update" element={<EditPlayer />} /> */}
           <Route path="/loc/" element={<Frame socket={socket} />}>
-            <Route path="town-square" element={<TownSquare />} />
+            <Route
+              path="town-square"
+              element={<TownSquare player={player} setPlayer={setPlayer} />}
+            />
             <Route path="tavern" element={<Tavern />} />
             <Route path="salon" element={<Salon />} />
           </Route>
