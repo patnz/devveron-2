@@ -20,6 +20,8 @@ export default function PlayersHere({ socket }: Props) {
     setUsers(users.filter((user) => user.id != player.id))
   })
 
+  // socket.on('online players')... generate a list of currently online players
+
   return <div className="player-list-container"></div>
 }
 
