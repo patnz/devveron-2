@@ -1,16 +1,17 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks/redux'
-import { Socket } from 'socket.io-client'
+// import { Socket } from 'socket.io-client'
 import { Player } from '../../models/player'
 
 interface Props {
-  socket: Socket
+  // socket: Socket
   player: Player
   setPlayer: Function
 }
 
-function EditPlayer({ socket, player, setPlayer }: Props) {
-  const dispatch = useAppDispatch()
+//please note we have removed socket as an argument within the destructured object
+function EditPlayer({ player, setPlayer }: Props) {
+  // const dispatch = useAppDispatch()
   const [editFormData, setEditFormData] = useState({
     char_name: player.char_name,
     pronouns: player.pronouns,

@@ -20,6 +20,10 @@ const socket = io(url)
 function App() {
   const { user, isAuthenticated } = useAuth0()
   const [player, setPlayer] = useState({} as Player)
+  const goto = (newlocation: string) => {
+    player.location = newlocation
+    setPlayer(player)
+  }
   const nav = useNavigate()
 
   const loggingOut = useCallback(() => {
@@ -67,7 +71,7 @@ function App() {
             path="/update"
             element={
               <EditPlayer
-                socket={socket}
+                // socket={socket}
                 player={player}
                 setPlayer={setPlayer}
               />
@@ -84,7 +88,9 @@ function App() {
             />
             <Route
               path="salon"
-              element={<Salon player={player} setPlayer={setPlayer} />}
+              element={
+                <Salon player={player} setPlayer={setPlayer} goto={goto} />
+              }
             />
           </Route>
         </Routes>
