@@ -1,4 +1,17 @@
-function Tavern() {
+import { Player } from '../../models/player'
+import { Link } from 'react-router-dom'
+
+interface Props {
+  player: Player
+  setPlayer: Function
+}
+
+function Tavern({ player, setPlayer }: Props) {
+  // Locations
+  const goTownSquare = () => {
+    player.location = 'town-square'
+    setPlayer(player)
+  }
   return (
     <>
       <div className="location">
@@ -11,7 +24,11 @@ function Tavern() {
           greets you warmly, the [Waitress] heads towards you to take your
           order, there is a [Thug] lurking by the stairs and a [Merchant] sits
           at a window seat with many empty glasses in front of him. Behind you
-          is the door leading out to the [Town Square].
+          is the door leading out to the{' '}
+          <Link to="/loc/town-square" onClick={goTownSquare} className="link">
+            Town Square
+          </Link>
+          .
         </p>
       </div>
     </>
