@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 interface Props {
   player: Player
-  setPlayer: Function
+  setPlayer: (palyer: Player) => void
   goto: (newlocation: string) => void
 }
 
@@ -13,9 +13,9 @@ function Salon({ player, setPlayer, goto }: Props) {
     goto('town-square')
   }
 
-  const goMagicMirror = () => {
-    goto('update')
-  }
+  // const goMagicMirror = () => {
+  //   goto('update')
+  // }
   return (
     <>
       <div className="location">
@@ -33,7 +33,7 @@ function Salon({ player, setPlayer, goto }: Props) {
             Town Square
           </Link>
           .
-          <Link to="/update" onClick={goMagicMirror} className="link">
+          <Link to="/update" className="link">
             Magic Mirror
           </Link>
           .

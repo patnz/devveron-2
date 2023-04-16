@@ -1,16 +1,23 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks/redux'
-// import { Socket } from 'socket.io-client'
+import { Socket } from 'socket.io-client'
 import { Player } from '../../models/player'
+import { redirect } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
-  // socket: Socket
+  socket: Socket
   player: Player
   setPlayer: Function
+  goto: (newlocation: string) => void
 }
 
 //please note we have removed socket as an argument within the destructured object
-function EditPlayer({ player, setPlayer }: Props) {
+function EditPlayer({ socket, player, setPlayer, goto }: Props) {
+  // const goSalon = () => {
+  //   redirect('/salon')
+  // }
+  const nav = useNavigate()
   // const dispatch = useAppDispatch()
   const [editFormData, setEditFormData] = useState({
     char_name: player.char_name,
@@ -20,11 +27,23 @@ function EditPlayer({ player, setPlayer }: Props) {
   const clickHandler = (e: FormEvent) => {
     e.preventDefault()
     // Add call to action for Editing the Player here. Don't forget to pass the OAuth ID as user!
+    player.char_name = editFormData.char_name
+    player.pronouns = editFormData.pronouns
+    player.description = editFormData.description
+    setPlayer(player)
+    if (player.user) {
+      socket.emit('update character', { ...player })
+    } else {
+      // it shouldn't be possible to see this component w/out a primary key but we should probably signal something here
+      alert('Invalid user, not updated on database.')
+    }
+    nav('/loc/salon')
   }
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setEditFormData({ ...editFormData, [e.target.id]: e.target.value })
   }
+
   return (
     <>
       <div className="edit-player">

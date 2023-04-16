@@ -63,9 +63,10 @@ function App() {
             path="/update"
             element={
               <EditPlayer
-                // socket={socket}
+                socket={socket}
                 player={player}
                 setPlayer={setPlayer}
+                goto={goto}
               />
             }
           />
