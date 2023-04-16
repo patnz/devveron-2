@@ -63,11 +63,29 @@ function App() {
         <Routes>
           <Route path="" element={<p>Loading...</p>} />
           <Route path="/create" element={<NewPlayer socket={socket} />} />
-          {/* <Route path="/update" element={<EditPlayer />} /> */}
+          <Route
+            path="/update"
+            element={
+              <EditPlayer
+                socket={socket}
+                player={player}
+                setPlayer={setPlayer}
+              />
+            }
+          />
           <Route path="/loc/" element={<Frame socket={socket} />}>
-            <Route path="town-square" element={<TownSquare />} />
-            <Route path="tavern" element={<Tavern />} />
-            <Route path="salon" element={<Salon />} />
+            <Route
+              path="town-square"
+              element={<TownSquare player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="tavern"
+              element={<Tavern player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="salon"
+              element={<Salon player={player} setPlayer={setPlayer} />}
+            />
           </Route>
         </Routes>
       </IfAuthenticated>

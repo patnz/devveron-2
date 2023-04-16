@@ -1,4 +1,21 @@
-function TownSquare() {
+import { Player } from '../../models/player'
+import { Link } from 'react-router-dom'
+
+interface Props {
+  player: Player
+  setPlayer: Function
+}
+
+function TownSquare({ player, setPlayer }: Props) {
+  // Locations
+  const goTavern = () => {
+    player.location = 'tavern'
+    setPlayer(player)
+  }
+  const goSalon = () => {
+    player.location = 'salon'
+    setPlayer(player)
+  }
   return (
     <>
       <div className="location">
@@ -13,10 +30,19 @@ function TownSquare() {
       <div className="entry">
         <p>
           You see a group of dimly lit buildings around a central fountain. You
-          can see a [Tavern], a [Salon], a [Church] and a [Item Shop] among the
-          buildings. There is a [Road] off to the side which leads down to the
-          Docks and Slum area, and behind you is the road leading [Out of Town]
+          can see a{' '}
+          <Link to="/loc/tavern" onClick={goTavern} className="link">
+            Tavern
+          </Link>
+          , a{' '}
+          <Link to="/loc/salon" onClick={goSalon} className="link">
+            Salon
+          </Link>
+          , a [Church] and a [Item Shop] among the buildings. There is a [Road]
+          off to the side which leads down to the Docks and Slum area, and
+          behind you is the road leading [Out of Town]
         </p>
+        <p>{player.location}</p>
       </div>
     </>
   )

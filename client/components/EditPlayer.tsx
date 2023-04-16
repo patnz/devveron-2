@@ -1,18 +1,20 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks/redux'
+import { Socket } from 'socket.io-client'
+import { Player } from '../../models/player'
 
 interface Props {
-  char_name: string
-  pronouns: string
-  description: string
+  socket: Socket
+  player: Player
+  setPlayer: Function
 }
 
-function EditPlayer({ char_name, pronouns, description }: Props) {
+function EditPlayer({ socket, player, setPlayer }: Props) {
   const dispatch = useAppDispatch()
   const [editFormData, setEditFormData] = useState({
-    char_name: char_name,
-    pronouns: pronouns,
-    description: description,
+    char_name: player.char_name,
+    pronouns: player.pronouns,
+    description: player.description,
   })
   const clickHandler = (e: FormEvent) => {
     e.preventDefault()
