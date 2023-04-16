@@ -22,7 +22,26 @@ export default function PlayersHere({ socket }: Props) {
 
   // socket.on('online players')... generate a list of currently online players
 
-  return <div className="player-list-container"></div>
+  socket.on('online players', (users) => {
+    setUsers(users)
+  })
+
+  return (
+    <div className="player-list-container">
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            <details>
+              <summary>
+                {user.name} <span>({user.pronouns})</span>
+              </summary>
+              <p>{user.description}</p>
+            </details>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 // map over each user in 'users' state and display them

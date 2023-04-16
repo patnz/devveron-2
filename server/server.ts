@@ -24,4 +24,8 @@ io.on('connection', (socket: any) => {
   })
 })
 
+expressServer.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'))
+})
+
 export default fullServer

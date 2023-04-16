@@ -8,16 +8,7 @@ export function loginHandlers(io: any, socket: any) {
       .then((player) => {
         if (player) {
           console.log('found')
-          socket.info = {
-            name: player.char_name,
-            pronouns: player.pronouns,
-            description: player.description,
-          }
-          io.to(socket.id).emit('send player data', player)
-          socket.broadcast.emit('player logged in', {
-            id: socket.id,
-            ...socket.info,
-          })
+          playerBroadcast(player, socket, io)
           // io.broadcast to tell other users someone's logged on also on char creation
           // & io.to this socket w/ info of other sockets
         } else {
@@ -35,12 +26,7 @@ export function loginHandlers(io: any, socket: any) {
     addPlayer(player)
       .then((player) => {
         console.log('character created')
-        socket.info = {
-          name: player.char_name,
-          pronouns: player.pronouns,
-          description: player.description,
-        }
-        io.to(socket.id).emit('send player data', player)
+        playerBroadcast(player, socket, io)
       })
       .catch((err) => {
         console.log(err.message)
@@ -48,15 +34,45 @@ export function loginHandlers(io: any, socket: any) {
       })
   })
 
+  socket.on('disconnect', (player: Player) => {
+    console.log('leaving')
+  })
+
   socket.on('logging out', (player: Player) => {
+    console.log('bye')
     updatePlayer(player)
       .then(() => {
         console.log('character logged out')
-        socket.broadcast.emit('player logged out', socket.info)
+        socket.broadcast.emit('player logged out', {
+          id: socket.id,
+          ...socket.info,
+        })
       })
       .catch((err) => {
         console.log(err.message)
         io.to(socket.id).emit('error', err.message)
       })
   })
+}
+
+export async function playerBroadcast(player: Player, socket: any, io: any) {
+  socket.info = {
+    name: player.char_name,
+    pronouns: player.pronouns,
+    description: player.description,
+  }
+  io.to(socket.id).emit('send player data', player)
+  socket.broadcast.emit('player logged in', {
+    id: socket.id,
+    ...socket.info,
+  })
+  const otherSockets = await socket.broadcast.fetchSockets()
+  // console.log(otherSockets)
+  io.to(socket.id).emit(
+    'online players',
+    otherSockets.map((socket: any) => ({
+      id: socket.id,
+      ...socket.info,
+    }))
+  )
 }
