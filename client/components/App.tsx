@@ -30,14 +30,6 @@ function App() {
     socket.emit('logging out', player)
   }, [player])
 
-  useBeforeUnload(
-    useCallback(() => {
-      if (isAuthenticated) {
-        loggingOut()
-      }
-    }, [loggingOut, isAuthenticated])
-  )
-
   useEffect(() => {
     console.log(user)
     if (user) {

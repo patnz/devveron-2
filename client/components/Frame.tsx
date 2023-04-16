@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Header from './Header'
 import PlayersHere from './PlayersHere'
 import Chat from './Chat'
@@ -9,11 +9,13 @@ interface Props {
 }
 
 export default function Frame({ socket }: Props) {
+  // useLocation()
+
   return (
     <>
       <Header />
       <Outlet />
-      <PlayersHere />
+      <PlayersHere socket={socket} />
       <Chat socket={socket} />
     </>
   )
