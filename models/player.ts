@@ -11,3 +11,10 @@ export interface Player extends PlayerInfo {
   progress: any
   gold: number
 }
+
+export interface ActivePlayer {
+  id: string
+  name: string
+  pronouns: string
+  description: string
+}
