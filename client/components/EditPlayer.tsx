@@ -1,24 +1,17 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { useAppDispatch } from '../hooks/redux'
 import { Socket } from 'socket.io-client'
 import { Player } from '../../models/player'
-import { redirect } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 interface Props {
   socket: Socket
   player: Player
   setPlayer: Function
-  goto: (newlocation: string) => void
 }
 
 //please note we have removed socket as an argument within the destructured object
-function EditPlayer({ socket, player, setPlayer, goto }: Props) {
-  // const goSalon = () => {
-  //   redirect('/salon')
-  // }
+function EditPlayer({ socket, player, setPlayer }: Props) {
   const nav = useNavigate()
-  // const dispatch = useAppDispatch()
   const [editFormData, setEditFormData] = useState({
     char_name: player.char_name,
     pronouns: player.pronouns,
