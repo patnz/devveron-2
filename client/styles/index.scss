@@ -1,11 +1,30 @@
-body {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 20px;
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&family=Rubik+Pixels&display=swap');
+
+* {
+  box-sizing: border-box;
+  border: 1px solid grey;
+  color:orange;
 }
 
+html, body {
+  margin: 0 auto;
+  background-color: #110a01;
+  display: flex;
+  justify-content: center;
+}
 
-
+.frame-container {
+  background-color: black;
+  color:orange;
+  letter-spacing: 1px;
+  font-family: 'Inconsolata', monospace;
+  width: 80vw;
+  height: 80vh;
+  padding: 50px;
+  border: 2px solid #30200c;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr repeat(4, 3fr) 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}

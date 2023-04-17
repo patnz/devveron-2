@@ -13,10 +13,12 @@ export default function Frame({ socket }: Props) {
 
   return (
     <>
-      <Header />
-      <Outlet />
-      <PlayersHere socket={socket} />
-      <Chat socket={socket} />
+      <section className="frame-container">
+        {/* <Header /> */}
+        <Outlet />
+        <PlayersHere socket={socket} />
+        <Chat socket={socket} />
+      </section>
     </>
   )
 }
