@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 interface Props {
   socket: Socket
   player: Player
-  setPlayer: Function
+  setPlayer: (player: Player) => void
 }
 
 //please note we have removed socket as an argument within the destructured object
@@ -19,13 +19,9 @@ function EditPlayer({ socket, player, setPlayer }: Props) {
   })
   const clickHandler = (e: FormEvent) => {
     e.preventDefault()
-    // Add call to action for Editing the Player here. Don't forget to pass the OAuth ID as user!
-    player.char_name = editFormData.char_name
-    player.pronouns = editFormData.pronouns
-    player.description = editFormData.description
-    setPlayer(player)
+    setPlayer({ ...player, ...editFormData })
     if (player.user) {
-      socket.emit('update character', { ...player })
+      socket.emit('update character', player)
     } else {
       // it shouldn't be possible to see this component w/out a primary key but we should probably signal something here
       alert('Invalid user, not updated on database.')

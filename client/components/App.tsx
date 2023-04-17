@@ -5,7 +5,7 @@ import { Nav } from './Nav'
 import io from 'socket.io-client'
 import { useEffect, useState, useCallback } from 'react'
 import { Player } from '../../models/player'
-import { Route, Routes, useNavigate, useBeforeUnload } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import NewPlayer from './NewPlayer'
 import Frame from './Frame'
 import TownSquare from './TownSquare'
@@ -18,12 +18,8 @@ const url = 'http://localhost:3000'
 const socket = io(url)
 
 function App() {
-  const { user, isAuthenticated } = useAuth0()
+  const { user } = useAuth0()
   const [player, setPlayer] = useState({} as Player)
-  const goto = (newlocation: string) => {
-    player.location = newlocation
-    setPlayer(player)
-  }
   const nav = useNavigate()
 
   const loggingOut = useCallback(() => {
@@ -71,7 +67,9 @@ function App() {
           />
           <Route
             path="/loc/"
-            element={<Frame socket={socket} player={player} />}
+            element={
+              <Frame socket={socket} player={player} setPlayer={setPlayer} />
+            }
           >
             <Route
               path="town-square"
@@ -83,9 +81,7 @@ function App() {
             />
             <Route
               path="salon"
-              element={
-                <Salon player={player} setPlayer={setPlayer} goto={goto} />
-              }
+              element={<Salon player={player} setPlayer={setPlayer} />}
             />
           </Route>
         </Routes>

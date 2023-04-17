@@ -2,6 +2,9 @@ import express from 'express'
 import path from 'path'
 import { Message } from '../models/messages'
 import { loginHandlers } from './socketHandlers/login'
+import { navHandlers } from './socketHandlers/nav'
+import { chatHandlers } from './socketHandlers/chat'
+import { updateHandlers } from './socketHandlers/update'
 
 const http = require('http')
 const sockets = require('socket.io')
@@ -18,10 +21,9 @@ io.on('connection', (socket: any) => {
   console.log('socket connected:', socket.id)
 
   loginHandlers(io, socket)
-
-  socket.on('send message', (msg: string) => {
-    io.emit('new message', { name: socket.info.name, message: msg })
-  })
+  navHandlers(io, socket)
+  chatHandlers(io, socket)
+  updateHandlers(io, socket)
 })
 
 expressServer.get('*', (req, res) => {

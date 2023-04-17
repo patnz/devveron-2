@@ -1,9 +1,7 @@
-// this component sits inside Frame component
-// this function should take socket as param
-
 import { useState } from 'react'
 import { Socket } from 'socket.io-client'
 import { ActivePlayer } from '../../models/player'
+import { useLocation } from 'react-router-dom'
 
 interface Props {
   socket: Socket
@@ -11,6 +9,8 @@ interface Props {
 
 export default function PlayersHere({ socket }: Props) {
   const [users, setUsers] = useState([] as ActivePlayer[])
+  const [isGlobal, setIsGlobal] = useState(true)
+  const loc = useLocation().pathname.split('/')[2]
 
   socket.on('player logged in', (player) => {
     setUsers([...users, player])
@@ -20,17 +20,25 @@ export default function PlayersHere({ socket }: Props) {
     setUsers(users.filter((user) => user.id != player.id))
   })
 
-  // socket.on('online players')... generate a list of currently online players
+  socket.on('player moved', (id: string, location: string) => {
+    console.log('saw player move')
+    setUsers(
+      users.map((user) => (user.id === id ? { ...user, location } : user))
+    )
+  })
 
   socket.on('online players', (users) => {
     setUsers(users)
   })
 
   return (
-    <div className="players-here-container">
-      <h1>Players currently online:</h1>
+    <div className="player-list-container">
+      <h2>Players {isGlobal ? 'Online' : 'Here'}</h2>
       <ul>
-        {users.map((user) => (
+        {(isGlobal
+          ? users
+          : users.filter(({ location }) => location === loc)
+        ).map((user) => (
           <li key={user.id}>
             <details>
               <summary>
@@ -41,10 +49,14 @@ export default function PlayersHere({ socket }: Props) {
           </li>
         ))}
       </ul>
+      <div className="scopeControl">
+        <button onClick={() => setIsGlobal(true)} disabled={isGlobal}>
+          Global
+        </button>
+        <button onClick={() => setIsGlobal(false)} disabled={!isGlobal}>
+          Local
+        </button>
+      </div>
     </div>
   )
 }
-
-// map over each user in 'users' state and display them
-// as individual player names, with optional expansion
-// use <details> and <summary> and list these elements in <ul><li>
