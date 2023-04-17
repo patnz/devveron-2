@@ -8,7 +8,7 @@ export interface PlayerInfo {
 export interface Player extends PlayerInfo {
   inventory: string[]
   location: string
-  progress: any
+  progress: Progress
   gold: number
 }
 
@@ -18,4 +18,18 @@ export interface ActivePlayer {
   pronouns: string
   description: string
   location: string
+}
+
+export interface Progress {
+  quests: Quests
+  events: Events
+}
+
+export interface Quests {
+  main: number
+  josh: number
+}
+
+export interface Events {
+  newToTavern: boolean
 }

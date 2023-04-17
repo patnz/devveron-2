@@ -1,4 +1,4 @@
-import { Player } from '../../models/player'
+import { Player, Progress } from '../../models/player'
 
 export function updateHandlers(io: any, socket: any) {
   socket.on('update inventory', (inventory: string[]) => {
@@ -9,7 +9,7 @@ export function updateHandlers(io: any, socket: any) {
     socket.data = { ...socket.data, gold }
   })
 
-  socket.on('update progress', (progress: any) => {
+  socket.on('update progress', (progress: Progress) => {
     socket.data = { ...socket.data, progress }
   })
 
