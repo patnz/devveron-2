@@ -1,15 +1,14 @@
 import { Player } from '../../models/player'
 import { Link } from 'react-router-dom'
+import Patch from './Patch'
 
 interface Props {
   player: Player
   setPlayer: (player: Player) => void
+  socket: any
 }
 
-function Salon({ player, setPlayer }: Props) {
-  console.log(player.progress.quests.main)
-  console.log(player.progress.quests.josh)
-  console.log(player.progress.events.newToTavern)
+function Salon({ player, setPlayer, socket }: Props) {
   return (
     <>
       <div className="location-name">
@@ -17,18 +16,17 @@ function Salon({ player, setPlayer }: Props) {
       </div>
       <div className="location-content-container">
         <p>
-          Welcome to the Salon, where you can change your character attributes
-          in the{' '}
+          The Salon is a cozy store with a{' '}
           <Link to="/update" className="link">
             Magic Mirror
-          </Link>
-          . Behind you is the door leading you back to the{' '}
+          </Link>{' '}
+          on the wall.
+        </p>
+        <Patch player={player} setPlayer={setPlayer} socket={socket} />
+        <p>
+          Behind you is the door leading you back to the{' '}
           <Link to="/loc/town-square" className="link">
             Town Square
-          </Link>
-          .
-          <Link to="/update" className="link">
-            Magic Mirror
           </Link>
           .
         </p>

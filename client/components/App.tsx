@@ -81,7 +81,9 @@ function App() {
             />
             <Route
               path="salon"
-              element={<Salon player={player} setPlayer={setPlayer} />}
+              element={
+                <Salon player={player} setPlayer={setPlayer} socket={socket} />
+              }
             />
           </Route>
         </Routes>
