@@ -19,7 +19,7 @@ function TownSquare({ player, setPlayer }: Props) {
         </p>
       </div> */}
       <div className="location-content-container">
-        <p>
+        <p className="location-content typerwriter">
           You see a group of dimly lit buildings around a central fountain. You
           can see a{' '}
           <Link to="/loc/tavern" className="link">
