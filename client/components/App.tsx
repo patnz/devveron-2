@@ -66,11 +66,13 @@ function App() {
                 socket={socket}
                 player={player}
                 setPlayer={setPlayer}
-                goto={goto}
               />
             }
           />
-          <Route path="/loc/" element={<Frame socket={socket} />}>
+          <Route
+            path="/loc/"
+            element={<Frame socket={socket} player={player} />}
+          >
             <Route
               path="town-square"
               element={<TownSquare player={player} setPlayer={setPlayer} />}
