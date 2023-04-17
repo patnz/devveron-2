@@ -33,6 +33,19 @@ function TownSquare({ player, setPlayer }: Props) {
           off to the side which leads down to the Docks and Slum area, and
           behind you is the road leading [Out of Town]
         </p>
+        <p>{player.location}</p>
+        <p>
+          A lowly street urchin appears… Street Urchin Pat: “Welcome fellow
+          traveller, to our land of Devveron” “You look a little lost and
+          confused right now but be sure that you are in a safe place.” “There
+          are many things to see and learn about in Devveron so please have a
+          look about And have an adventure!” “If you have the time, traveller -
+          you ought to go to the Docks and see my friend Mayor Kelly. Should you
+          go see them, I would really appreciate you deliver them a package
+          consisting of a Lego set of the Millenium Falcon. The Mayor has been
+          hiding Lego stashes around the world of Devveron so if you find any
+          further Lego, please deliver it to the Mayor for a nice gold reward!”
+        </p>
       </div>
     </>
   )
