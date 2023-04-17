@@ -59,3 +59,38 @@ text-align: center; }
 .inventory-container { grid-area: inventory-container; border: 2px solid #598381; padding: 5px; }
 .players-here-container { grid-area: players-here-container; border: 2px solid #598381; padding: 5px; }
 
+
+ //chat-container
+  ////chat-content-container
+  //scope-control-container
+  //// scope-button x2
+  //chat-input-container
+  ////chat-prompt
+  ////chat-input-box
+  /// 
+  /// 
+
+
+
+
+.chat-container{
+  display: grid; 
+  grid-template-rows: 1fr 12fr 1fr .5fr 1fr; 
+  gap: 0px; 
+  grid-template-areas:
+    "chat-title"
+    "chat-content-container"
+    "scope-control-container"
+    "chat-input-container"
+    "location-content-container";
+}
+
+.chat-title {grid-area:chat-title; text-align: center;
+margin: 0 auto;
+padding: 0;}
+.chat-content-container { grid-area: chat-content-container;
+overflow: hidden;}
+.scope-control-container { grid-area: scope-control-container;}
+.chat-input-container { grid-area: chat-input-container;}
+.chat-prompt { grid-area: chat-prompt;}
+.chat-input-box { grid-area: chat-input-box;}
