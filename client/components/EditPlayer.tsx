@@ -35,7 +35,7 @@ function EditPlayer({ socket, player, setPlayer }: Props) {
 
   return (
     <>
-      <div className="edit-player">
+      <div className="edit-player-container">
         <h2>Please update your character here</h2>
         <form onSubmit={clickHandler} className="edit-player-form">
           <table>

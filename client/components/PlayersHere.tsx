@@ -17,7 +17,11 @@ export default function PlayersHere({ socket }: Props) {
   })
 
   socket.on('player logged out', (player) => {
-    setUsers(users.filter((user) => user.id != player.id))
+    setUsers(users.filter((user) => user.id !== player.id))
+  })
+
+  socket.on('player used mirror', (player) => {
+    setUsers(users.map((user) => (user.id === player.id ? player : user)))
   })
 
   socket.on('player moved', (id: string, location: string) => {
@@ -32,30 +36,40 @@ export default function PlayersHere({ socket }: Props) {
   })
 
   return (
-    <div className="player-list-container">
-      <h2>Players {isGlobal ? 'Online' : 'Here'}</h2>
-      <ul>
+    <div className="players-here-container">
+      <div className="players-here-title-and-scope-container">
+        <h2 className="players-here-title">
+          Players {isGlobal ? 'Online' : 'Here'}
+        </h2>
+        <div className="scope-control-container">
+          <button
+            className="scope-button"
+            onClick={() => setIsGlobal(true)}
+            disabled={isGlobal}
+          >
+            Global
+          </button>
+          <button
+            className="scope-button"
+            onClick={() => setIsGlobal(false)}
+            disabled={!isGlobal}
+          >
+            Local
+          </button>
+        </div>
+      </div>
+      <div className="players-here-list">
         {(isGlobal
           ? users
           : users.filter(({ location }) => location === loc)
         ).map((user) => (
-          <li key={user.id}>
-            <details>
-              <summary>
-                {user.name} <span>({user.pronouns})</span>
-              </summary>
-              <p>{user.description}</p>
-            </details>
-          </li>
+          <details key={user.id}>
+            <summary>
+              {user.name} <span>({user.pronouns})</span>
+            </summary>
+            <p>{user.description}</p>
+          </details>
         ))}
-      </ul>
-      <div className="scopeControl">
-        <button onClick={() => setIsGlobal(true)} disabled={isGlobal}>
-          Global
-        </button>
-        <button onClick={() => setIsGlobal(false)} disabled={!isGlobal}>
-          Local
-        </button>
       </div>
     </div>
   )

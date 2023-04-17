@@ -9,16 +9,16 @@ interface Props {
 function TownSquare({ player, setPlayer }: Props) {
   return (
     <>
-      <div className="location">
+      <div className="location-name">
         <h2>Metellicana Town Square</h2>
       </div>
-      <div className="first-load">
+      {/* <div className="first-load">
         <p>
           You slowly wake up outside a tavern in an unknown world, its a warm
           night and you appear to be in the middle of a bustling town.
         </p>
-      </div>
-      <div className="entry">
+      </div> */}
+      <div className="location-content-container">
         <p>
           You see a group of dimly lit buildings around a central fountain. You
           can see a{' '}
