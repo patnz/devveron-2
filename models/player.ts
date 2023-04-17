@@ -21,15 +21,6 @@ export interface ActivePlayer {
 }
 
 export interface Progress {
-  quests: Quests
-  events: Events
-}
-
-export interface Quests {
-  main: number
-  josh: number
-}
-
-export interface Events {
-  newToTavern: boolean
+  quests: Record<string, number>
+  events: Record<string, boolean>
 }
