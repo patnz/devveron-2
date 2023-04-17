@@ -6,6 +6,10 @@
   cursor: default;
 }
 
+/////////////////////////////////////////////////////////////
+/////////////////// GLOBAL / ELEMENTS /////////////////////////
+//////////////////////////////////////////////////////////////
+
 h1,
 h2,
 h3,
@@ -15,6 +19,17 @@ p {
   margin: none;
 }
 
+
+a {
+  color:#598381;
+  text-decoration: none;
+  border-bottom: 1px solid #be7e06;
+}
+
+a:hover {
+  cursor:pointer;
+}
+
 html,
 body {
   margin: 0 auto;
@@ -22,6 +37,7 @@ body {
   display: flex;
   justify-content: center;
   padding: 20px;
+  font-family: 'Inconsolata', monospace;
 }
 
 input {
@@ -70,7 +86,7 @@ input {
   border-top-right-radius: 15px;
 }
 
-.new-player-button {
+.new-player-button, .edit-player-button {
   height: 70px;
   width: 180px;
   background-color: #302428;
@@ -84,7 +100,8 @@ input {
 }
 
 .log-button:hover,
-.new-player-button:hover {
+.new-player-button:hover,
+.edit-player-button:hover {
   box-shadow: 0px 0px 10px #f95e04;
   color: #bb4b0a;
   transition: 1s;
@@ -111,14 +128,13 @@ input {
   border-bottom-right-radius: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr 0.8fr;
-  grid-template-rows: 0.3fr 0.5fr 0.7fr 1fr 0.5fr;
+  grid-template-rows: 0.3fr 1fr 2fr auto;
   gap: 0px 0px;
   grid-template-areas:
     'location-name location-name players-here-container'
     'location-content-container location-content-container players-here-container'
-    'location-content-container location-content-container inventory-container'
     'location-content-container location-content-container chat-container'
-    'location-content-container location-content-container chat-container';
+    'inventory-container inventory-container chat-container';
 }
 
 
@@ -145,15 +161,54 @@ input {
   line-height: 25px;
 }
 
+.location-content {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid #b34505; /* The typwriter cursor */
+  white-space: wrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 5s steps(40, end),
+    // blink-caret .75s step-end infinite;
+}
+
+
+/* The typing effect */
+@keyframes typing {
+  from { height: 0 }
+  to { height: 100% }
+}
+
+/* The typewriter cursor effect */
+// @keyframes blink-caret {
+//   from, to { border-color: transparent }
+//   50% { border-color: orange; }
+// }
+
 
 /////////////////////////////////////////////////////////////
 //////////////////////// INVENTORY //////////////////////////////
 //////////////////////////////////////////////////////////////
 
 .inventory-container {
+  height: 100%;
   grid-area: inventory-container;
-  border: 2px solid #598381;
+  display: flex;
+  flex-direction: column;
   padding: 5px;
+}
+
+.inventory-details {
+
+}
+
+.inventory-list {
+  height:50%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  list-style: none;
 }
 
 //////////////////////////////////////////////////////////////
@@ -255,7 +310,7 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  overflow: scroll;
+  overflow-y: scroll;
   margin-top: 10px;
 }
 
@@ -287,7 +342,8 @@ input {
 
 
 .login-page-container,
-.new-player-container {
+.new-player-container, 
+.edit-player-container {
   box-shadow: 0px 0px 10px #d99008;
   background-color: #302428;
   color: #b34505;
@@ -311,7 +367,7 @@ input {
   padding: 10px 50px;
 }
 
-.new-player-container {
+.new-player-container, .edit-player-container {
   justify-content: center;
 }
 
@@ -324,13 +380,13 @@ input {
   color: #b34505;
 }
 
-.new-player-form {
+.new-player-form, .edit-player-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.new-player-form input {
+.new-player-form input, .edit-player-form input {
   width: 250px;
 }
 
