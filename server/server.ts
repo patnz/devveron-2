@@ -4,6 +4,7 @@ import { Message } from '../models/messages'
 import { loginHandlers } from './socketHandlers/login'
 import { navHandlers } from './socketHandlers/nav'
 import { chatHandlers } from './socketHandlers/chat'
+import { updateHandlers } from './socketHandlers/update'
 
 const http = require('http')
 const sockets = require('socket.io')
@@ -22,6 +23,7 @@ io.on('connection', (socket: any) => {
   loginHandlers(io, socket)
   navHandlers(io, socket)
   chatHandlers(io, socket)
+  updateHandlers(io, socket)
 })
 
 expressServer.get('*', (req, res) => {

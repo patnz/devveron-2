@@ -20,10 +20,6 @@ const socket = io(url)
 function App() {
   const { user } = useAuth0()
   const [player, setPlayer] = useState({} as Player)
-  const goto = (newlocation: string) => {
-    player.location = newlocation
-    setPlayer(player)
-  }
   const nav = useNavigate()
 
   const loggingOut = useCallback(() => {
@@ -85,9 +81,7 @@ function App() {
             />
             <Route
               path="salon"
-              element={
-                <Salon player={player} setPlayer={setPlayer} goto={goto} />
-              }
+              element={<Salon player={player} setPlayer={setPlayer} />}
             />
           </Route>
         </Routes>
