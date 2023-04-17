@@ -4,11 +4,11 @@ import Patch from './Patch'
 
 interface Props {
   player: Player
-  setPlayer: (player: Player) => void
+  updateEvents: (events: Record<string, boolean>) => void
   socket: any
 }
 
-function Salon({ player, setPlayer, socket }: Props) {
+function Salon({ player, updateEvents, socket }: Props) {
   return (
     <>
       <div className="location-name">
@@ -22,7 +22,7 @@ function Salon({ player, setPlayer, socket }: Props) {
           </Link>{' '}
           on the wall.
         </p>
-        <Patch player={player} setPlayer={setPlayer} socket={socket} />
+        <Patch player={player} updateEvents={updateEvents} socket={socket} />
         <p>
           Behind you is the door leading you back to the{' '}
           <Link to="/loc/town-square" className="link">

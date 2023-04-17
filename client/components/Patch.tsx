@@ -3,11 +3,11 @@ import { Player } from '../../models/player'
 
 interface Props {
   player: Player
-  setPlayer: (player: Player) => void
+  updateEvents: (events: Record<string, boolean>) => void
   socket: any
 }
 
-export default function Patch({ player, setPlayer, socket }: Props) {
+export default function Patch({ player, updateEvents, socket }: Props) {
   const {
     progress: { events },
   } = player
@@ -15,6 +15,7 @@ export default function Patch({ player, setPlayer, socket }: Props) {
 
   const handleQuestion = () => {
     setConvoStage(2)
+    updateEvents({ metPatch: true })
   }
 
   return (
