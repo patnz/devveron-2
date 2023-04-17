@@ -7,6 +7,9 @@ interface Props {
 }
 
 function Salon({ player, setPlayer }: Props) {
+  console.log(player.progress.quests.main)
+  console.log(player.progress.quests.josh)
+  console.log(player.progress.events.newToTavern)
   return (
     <>
       <div className="location">
