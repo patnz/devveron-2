@@ -155,10 +155,12 @@ input {
 //////////////////////////////////////////////////////////////
 
 .location-content-container {
+  font-size: .8em;
   grid-area: location-content-container;
   border: 2px solid #598381;
   padding: 15px;
   line-height: 25px;
+  overflow-y:scroll;
 }
 
 .location-content {
