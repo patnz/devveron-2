@@ -1,11 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&family=Rubik+Pixels&display=swap');
+
+* {
+  box-sizing: border-box;
+  // border: 1px solid #598381;
+  cursor: default;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: none;
+}
+
+html,
 body {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
+  margin: 0 auto;
+  background-color: #121417;
+  display: flex;
+  justify-content: center;
   padding: 20px;
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+input {
+  background-color: #be7e06;
+  border: 1px solid #b34505;
+  padding: 5px;
+  color: #302428;
+  cursor: pointer;
+}
+
+/////////////////////////////////////////////////////////////
+//////////////////////// NAV //////////////////////////////
+//////////////////////////////////////////////////////////////
+
+.nav-container {
+  display: flex;
+  color: #d99008;
+  background-color: #302428;
+  justify-content: space-between;
+  border: 2px solid #598381;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 18px;
+  box-shadow: 0px 0px 15px #d99008;
+}
+
+.nav-message {
+  letter-spacing: 3px;
+  padding-left: 15px;
 }
 
 
+/////////////////////////////////////////////////////////////
+//////////////////////// LOGIN BUTTON ///////////////////////////
+//////////////////////////////////////////////////////////////
+
+.log-button {
+  height: auto;
+  width: 120px;
+  background-color: #302428;
+  color: #d99008;
+  border: double 6px #598381;
+  letter-spacing: 2px;
+  box-shadow: none;
+  transition: box-shadow 2s;
+  transition: color 3s;
+  border-top-right-radius: 15px;
+}
+
+.new-player-button {
+  height: 70px;
+  width: 180px;
+  background-color: #302428;
+  color: #d99008;
+  border: solid 3px #b34505;
+  letter-spacing: 2px;
+  box-shadow: none;
+  transition: box-shadow 2s;
+  transition: color 3s;
+  align-self: center;
+}
+
+.log-button:hover,
+.new-player-button:hover {
+  box-shadow: 0px 0px 10px #f95e04;
+  color: #bb4b0a;
+  transition: 1s;
+  cursor: pointer;
+}
+
+/////////////////////////////////////////////////////////////
+//////////////////////// FRAME //////////////////////////////
+//////////////////////////////////////////////////////////////
+
+.frame-container {
+  box-shadow: 0px 0px 10px #d99008;
+  background-color: #302428;
+  color: #b34505;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: 'Inconsolata', monospace;
+  width: 80vw;
+  max-width: 800px;
+  height: 80vh;
+  padding: 5px;
+  border: 2px solid #598381;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.8fr;
+  grid-template-rows: 0.3fr 0.5fr 0.7fr 1fr 0.5fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    'location-name location-name players-here-container'
+    'location-content-container location-content-container players-here-container'
+    'location-content-container location-content-container inventory-container'
+    'location-content-container location-content-container chat-container'
+    'location-content-container location-content-container chat-container';
+}
+
+
+/////////////////////////////////////////////////////////////
+//////////////////////// LOCATION TITLE //////////////////////////////
+//////////////////////////////////////////////////////////////
+
+.location-name {
+  grid-area: location-name;
+  border: 2px solid #598381;
+  padding: 5px;
+  text-align: center;
+}
+
+
+/////////////////////////////////////////////////////////////
+//////////////////////// MAIN CONTENT //////////////////////////////
+//////////////////////////////////////////////////////////////
+
+.location-content-container {
+  grid-area: location-content-container;
+  border: 2px solid #598381;
+  padding: 15px;
+  line-height: 25px;
+}
+
+
+/////////////////////////////////////////////////////////////
+//////////////////////// INVENTORY //////////////////////////////
+//////////////////////////////////////////////////////////////
+
+.inventory-container {
+  grid-area: inventory-container;
+  border: 2px solid #598381;
+  padding: 5px;
+}
+
+//////////////////////////////////////////////////////////////
+////////////////// PLAYER LIST //////////////////////////////
+//////////////////////////////////////////////////////////////
+
+.players-here-container {
+  grid-area: players-here-container;
+  border: 2px solid #598381;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 0.8em;
+}
+
+.players-here-title-and-scope-container {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.players-here-title {
+  font-size: 1em;
+  width: 40%;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.scope-control-container {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.scope-button {
+  height: 25px;
+  background-color: inherit;
+  color: #b34505;
+}
+
+.players-here-list {
+  height: 80%;
+  font-size: 0.8em;
+  padding: 10px;
+}
+
+/////////////////////////////////////////////////////////////
+//////////////////////// CHAT //////////////////////////////
+//////////////////////////////////////////////////////////////
+
+
+
+.chat-container {
+  grid-area: chat-container;
+  border: 2px solid #598381;
+  padding: 5px;
+  font-size: .9em;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-evenly;
+}
+
+.title-and-scope-container {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.chat-title {
+  font-size: 1em;
+  width: 40%;
+  height: 25px;
+  line-height:25px;
+  margin: 0;
+  text-align: center;
+}
+
+.scope-control-container {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.scope-button {
+  height: 25px;
+  background-color: inherit;
+  color: #b34505;
+}
+
+.chat-content-container {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: scroll;
+  margin-top: 10px;
+}
+
+.chat-message {
+  color: #d99008;
+  margin: 4px;
+}
+
+.chat-input-container {
+  height: 20%;
+  width: 100%;
+}
+
+.chat-input-container input {
+  font-size: .9em;
+  background-color: inherit;
+  width: 100%;
+  color: #d99008;
+}
+
+.chat-prompt {
+  padding: 5px;
+  letter-spacing: 2px;
+}
+
+//////////////////////////////////////////////////////////////
+//////////////// LOGIN / NEW PLAYER //////////////////////
+//////////////////////////////////////////////////////////////
+
+
+.login-page-container,
+.new-player-container {
+  box-shadow: 0px 0px 10px #d99008;
+  background-color: #302428;
+  color: #b34505;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: 'Inconsolata', monospace;
+  width: 80vw;
+  max-width: 800px;
+  height: 80vh;
+  padding: 5px;
+  border: 2px solid #598381;
+  overflow: scroll;
+  overflow-anchor: 0px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  line-height: 40px;
+  padding: 10px 50px;
+}
+
+.new-player-container {
+  justify-content: center;
+}
+
+.welcome-title {
+  color: #d99008;
+  font-size: 2em;
+  letter-spacing: 4px;
+}
+.welcome-message {
+  color: #b34505;
+}
+
+.new-player-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.new-player-form input {
+  width: 250px;
+}
 

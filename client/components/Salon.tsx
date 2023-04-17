@@ -9,10 +9,10 @@ interface Props {
 function Salon({ player, setPlayer }: Props) {
   return (
     <>
-      <div className="location">
+      <div className="location-name">
         <h2>The Salon</h2>
       </div>
-      <div className="entry">
+      <div className="location-content-container">
         <p>
           Welcome to the Salon, where you can change your character attributes
           in the{' '}

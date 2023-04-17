@@ -64,31 +64,52 @@ export default function Chat({ socket }: Props) {
     newLocalMessage(msg)
   })
 
+  //chat-container
+  ////chat-content-container
+  //scope-control-container
+  //// scope-button x2
+  //chat-input-container
+  ////chat-prompt
+  ////chat-input-box
+
   return (
     <div className="chat-container">
-      <h2>Devveron 2.0 Chat</h2>
-      <ul className="chat-content">
+      <div className="title-and-scope-container">
+        <h2 className="chat-title">Chat</h2>
+        <div className="scope-control-container">
+          <button
+            className="scope-button"
+            onClick={() => setInGlobalChat(true)}
+            disabled={inGlobalChat}
+          >
+            Global
+          </button>
+          <button
+            className="scope-button"
+            onClick={() => setInGlobalChat(false)}
+            disabled={!inGlobalChat}
+          >
+            Local
+          </button>
+        </div>
+      </div>
+      <div className="chat-content-container">
         {(inGlobalChat ? globalMessages : localMessages).map(
           ({ name, message }, i) => (
-            <li key={i}>
+            <p className="chat-message" key={i}>
               {name && <span>{name}: </span>}
               {message}
-            </li>
+            </p>
           )
         )}
-      </ul>
-      <div className="scopeControl">
-        <button onClick={() => setInGlobalChat(true)} disabled={inGlobalChat}>
-          Global
-        </button>
-        <button onClick={() => setInGlobalChat(false)} disabled={!inGlobalChat}>
-          Local
-        </button>
       </div>
-      <form className="chat-input" onSubmit={handleChat}>
-        <label htmlFor="message">New message:</label>
+      <form className="chat-input-container" onSubmit={handleChat}>
+        <label className="chat-prompt" htmlFor="message">
+          New message:
+        </label>
         <input
           type="text"
+          className="chat-input-box"
           value={message}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setMessage(e.target.value)

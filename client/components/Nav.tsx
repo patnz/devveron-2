@@ -22,15 +22,19 @@ export function Nav({ loggingOut }: Props) {
   return (
     <>
       <IfAuthenticated>
-        <nav>
-          <p>WELCOME {user?.nickname} !</p>
-          <button onClick={handleSignOut}>sign out</button>
+        <nav className="nav-container">
+          <h1 className="nav-message">Welcome {user?.nickname}!</h1>
+          <button className="log-button" onClick={handleSignOut}>
+            SIGN OUT
+          </button>
         </nav>
       </IfAuthenticated>
       <IfNotAuthenticated>
-        <nav>
-          <p>you are not logged in</p>
-          <button onClick={handleSignIn}>sign in</button>
+        <nav className="nav-container">
+          <h1 className="nav-message">You are not logged in 🗝️ </h1>
+          <button className="log-button" onClick={handleSignIn}>
+            SIGN IN
+          </button>
         </nav>
       </IfNotAuthenticated>
     </>
