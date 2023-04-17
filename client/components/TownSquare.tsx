@@ -3,19 +3,10 @@ import { Link } from 'react-router-dom'
 
 interface Props {
   player: Player
-  setPlayer: Function
+  setPlayer: (player: Player) => void
 }
 
 function TownSquare({ player, setPlayer }: Props) {
-  // Locations
-  const goTavern = () => {
-    player.location = 'tavern'
-    setPlayer(player)
-  }
-  const goSalon = () => {
-    player.location = 'salon'
-    setPlayer(player)
-  }
   return (
     <>
       <div className="location">
@@ -31,11 +22,11 @@ function TownSquare({ player, setPlayer }: Props) {
         <p>
           You see a group of dimly lit buildings around a central fountain. You
           can see a{' '}
-          <Link to="/loc/tavern" onClick={goTavern} className="link">
+          <Link to="/loc/tavern" className="link">
             Tavern
           </Link>
           , a{' '}
-          <Link to="/loc/salon" onClick={goSalon} className="link">
+          <Link to="/loc/salon" className="link">
             Salon
           </Link>
           , a [Church] and a [Item Shop] among the buildings. There is a [Road]

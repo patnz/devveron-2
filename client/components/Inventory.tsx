@@ -16,9 +16,8 @@ function Inventory({ player }: Props) {
           </div>
           <div className="column">
             <p>{player.gold}</p>
-            {player.inventory.map((item) => (
-              <p key={item}>{item}</p>
-            ))}
+            {player.inventory &&
+              player.inventory.map((item) => <p key={item}>{item}</p>)}
           </div>
         </div>
       </div>
