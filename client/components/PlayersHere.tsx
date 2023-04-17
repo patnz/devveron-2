@@ -17,7 +17,11 @@ export default function PlayersHere({ socket }: Props) {
   })
 
   socket.on('player logged out', (player) => {
-    setUsers(users.filter((user) => user.id != player.id))
+    setUsers(users.filter((user) => user.id !== player.id))
+  })
+
+  socket.on('player used mirror', (player) => {
+    setUsers(users.map((user) => (user.id === player.id ? player : user)))
   })
 
   socket.on('player moved', (id: string, location: string) => {
