@@ -3,15 +3,19 @@ import { Link } from 'react-router-dom'
 
 interface Props {
   player: Player
-  setPlayer: Function
+  setPlayer: (palyer: Player) => void
+  goto: (newlocation: string) => void
 }
 
-function Salon({ player, setPlayer }: Props) {
+function Salon({ player, setPlayer, goto }: Props) {
   // Locations
   const goTownSquare = () => {
-    player.location = 'town-square'
-    setPlayer(player)
+    goto('town-square')
   }
+
+  // const goMagicMirror = () => {
+  //   goto('update')
+  // }
   return (
     <>
       <div className="location">
@@ -27,6 +31,10 @@ function Salon({ player, setPlayer }: Props) {
           . Behind you is the door leading you back to the{' '}
           <Link to="/loc/town-square" onClick={goTownSquare} className="link">
             Town Square
+          </Link>
+          .
+          <Link to="/update" className="link">
+            Magic Mirror
           </Link>
           .
         </p>
