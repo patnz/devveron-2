@@ -17,8 +17,8 @@ function Salon({ player, setPlayer }: Props) {
       </div>
       <div className="location-content-container">
         <p>
-          Welcome to the Salon, where you can change your character attributes
-          in the{' '}
+          Welcome to the Salon (also known as the Redux Store), where you can
+          change your character attributes in the{' '}
           <Link to="/update" className="link">
             Magic Mirror
           </Link>
