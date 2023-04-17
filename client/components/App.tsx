@@ -47,27 +47,41 @@ function App() {
   // Custom functions to be passed into the components, to replace setPlayer
 
   const addGold = (gold: number) => {
-    // Can be used to add (or subtract) gold from a player.
-    player.gold += gold
-    setPlayer(player)
+    gold = player.gold + gold
+    setPlayer({ ...player, gold })
+    socket.emit('update gold', gold)
   }
-  const addQuest = (quests: string) => {
-    // Logic here for creating a fresh quest
+  const updateQuests = (quests: Record<string, number>) => {
+    const progress = {
+      ...player.progress,
+      quests: { ...player.progress.quests, ...quests },
+    }
+    setPlayer({
+      ...player,
+      progress,
+    })
+    socket.emit('update progress', progress)
   }
-  const incrementQuest = (quests: string) => {
-    // Logic here for adding one to quest progress
-  }
-  const addEvent = (events: string) => {
-    // Logic here for creating a fresh event
-  }
-  const changeEvent = (events: string) => {
-    // Logic here for changing quest progress
+  const updateEvents = (events: Record<string, boolean>) => {
+    const progress = {
+      ...player.progress,
+      events: { ...player.progress.events, ...events },
+    }
+    setPlayer({
+      ...player,
+      progress,
+    })
+    socket.emit('update progress', progress)
   }
   const addItem = (item: string) => {
-    // Logic here to add an item to a player
+    const inventory = [...player.inventory, item]
+    setPlayer({ ...player, inventory })
+    socket.emit('update inventory', inventory)
   }
   const removeItem = (item: string) => {
-    // Logic here to pop a item from a player
+    const inventory = player.inventory.filter((i) => i !== item)
+    setPlayer({ ...player, inventory })
+    socket.emit('update inventory', inventory)
   }
   return (
     <>
@@ -106,7 +120,13 @@ function App() {
             />
             <Route
               path="salon"
-              element={<Salon player={player} setPlayer={setPlayer} />}
+              element={
+                <Salon
+                  player={player}
+                  updateEvents={updateEvents}
+                  socket={socket}
+                />
+              }
             />
           </Route>
         </Routes>

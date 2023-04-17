@@ -32,7 +32,7 @@ export default function Frame({ socket, player, setPlayer }: Props) {
     <>
       <section className="frame-container">
         {/* <Header /> */}
-        <Outlet />
+        {player.char_name ? <Outlet /> : <p>Loading...</p>}
         <PlayersHere socket={socket} />
         <Inventory player={player} />
         <Chat socket={socket} />
