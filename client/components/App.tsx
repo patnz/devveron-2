@@ -44,6 +44,31 @@ function App() {
     nav('/create')
   })
 
+  // Custom functions to be passed into the components, to replace setPlayer
+
+  const addGold = (gold: number) => {
+    // Can be used to add (or subtract) gold from a player.
+    player.gold += gold
+    setPlayer(player)
+  }
+  const addQuest = (quests: string) => {
+    // Logic here for creating a fresh quest
+  }
+  const incrementQuest = (quests: string) => {
+    // Logic here for adding one to quest progress
+  }
+  const addEvent = (events: string) => {
+    // Logic here for creating a fresh event
+  }
+  const changeEvent = (events: string) => {
+    // Logic here for changing quest progress
+  }
+  const addItem = (item: string) => {
+    // Logic here to add an item to a player
+  }
+  const removeItem = (item: string) => {
+    // Logic here to pop a item from a player
+  }
   return (
     <>
       <Nav loggingOut={loggingOut} />
