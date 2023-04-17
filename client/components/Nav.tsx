@@ -23,7 +23,7 @@ export function Nav({ loggingOut }: Props) {
     <>
       <IfAuthenticated>
         <nav className="nav-container">
-          <p>Welcome {user?.nickname}!</p>
+          <h1 className="nav-message">Welcome {user?.nickname}!</h1>
           <button className="log-button" onClick={handleSignOut}>
             SIGN OUT
           </button>
@@ -31,7 +31,7 @@ export function Nav({ loggingOut }: Props) {
       </IfAuthenticated>
       <IfNotAuthenticated>
         <nav className="nav-container">
-          <p>You are not logged in</p>
+          <h1 className="nav-message">You are not logged in 🗝️ </h1>
           <button className="log-button" onClick={handleSignIn}>
             SIGN IN
           </button>

@@ -6,9 +6,17 @@ function LoginPage() {
   return (
     <>
       <div className="login-page-container">
-        <h2>Enter Here!</h2>
-        <br />
-        <button onClick={loginWithRedirect}>Login</button>
+        <h1 className="welcome-title">Welcome to Devveron!</h1>
+        <h2 className="welcome-message">
+          .... ... .. ..... ... .. ... .. ... .. ...... ... ... .. .. ...
+          ........ .. .... ... .. ..... ... .. ... .. ... .. ...... ... ... ..
+          .. ... ........ .. .... ... .. ..... ... .. ... .. ... .. ...... ...
+          ... .. .. ... ........ .. .... ... .. ..... ... .. ... .. ... ..
+          ...... ... ... .. .. ... ........ .. .... ... .. ..... ... .. ... ..
+          ... .. ...... ... ... .. .. ... ........ .. .... ... .. ..... ... ..
+          ... .. ... .. ...... ... ... .. .. ... ........ ..{' '}
+        </h2>
+        {/* <button onClick={loginWithRedirect}>Login</button> */}
       </div>
     </>
   )
