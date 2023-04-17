@@ -128,12 +128,11 @@ input {
   border-bottom-right-radius: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr 0.8fr;
-  grid-template-rows: 0.3fr 0.5fr 0.7fr 1fr 0.3fr;
+  grid-template-rows: 0.3fr 1fr 2fr auto;
   gap: 0px 0px;
   grid-template-areas:
     'location-name location-name players-here-container'
     'location-content-container location-content-container players-here-container'
-    'location-content-container location-content-container chat-container'
     'location-content-container location-content-container chat-container'
     'inventory-container inventory-container chat-container';
 }
@@ -196,15 +195,20 @@ input {
   grid-area: inventory-container;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: 5px;
+}
+
+.inventory-details {
+
 }
 
 .inventory-list {
   height:50%;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
+  list-style: none;
 }
 
 //////////////////////////////////////////////////////////////

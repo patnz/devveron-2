@@ -1,4 +1,5 @@
 import { Player } from '../../models/player'
+import { useState } from 'react'
 
 interface Props {
   player: Player
@@ -11,9 +12,13 @@ function Inventory({ player }: Props) {
         <details className="inventory-details">
           <summary>Inventory</summary>
           <ul className="inventory-list">
-            <li>Gold: 20</li>
-            <li>Rotten Apple</li>
-            <li>Ashes</li>
+            <li className="inventory-item">Gold: {player.gold}</li>
+            {player.inventory &&
+              player.inventory.map((item) => (
+                <li className="inventory-item" key={item}>
+                  {item}
+                </li>
+              ))}
           </ul>
         </details>
       </div>
