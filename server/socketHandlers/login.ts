@@ -34,6 +34,22 @@ export function loginHandlers(io: any, socket: any) {
       })
   })
 
+  socket.on('update character', (player: Player) => {
+    console.log('Update in the Magic Mirror')
+    updatePlayer(player)
+      .then(() => {
+        console.log('character updated')
+        socket.broadcast.emit('character updated', {
+          id: socket.id,
+          ...socket.info,
+        })
+      })
+      .catch((err) => {
+        console.log(err.message)
+        io.to(socket.id).emit('error', err.message)
+      })
+  })
+
   socket.on('disconnect', () => {
     console.log('leaving')
     updatePlayer(socket.data)

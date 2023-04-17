@@ -8,10 +8,10 @@ exports.up = function (knex) {
     table.string('char_name')
     table.string('pronouns')
     table.text('description')
-    table.text('inventory').defaultTo('[]')
+    table.text('inventory').defaultTo(JSON.stringify(['Ruby', 'Pocketknife']))
     table.text('location').defaultTo('town-square')
     table.text('progress').defaultTo('{}')
-    table.integer('gold').defaultTo(0)
+    table.integer('gold').defaultTo(20)
   })
 }
 

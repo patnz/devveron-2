@@ -24,6 +24,10 @@ function Salon({ player, setPlayer }: Props) {
             Town Square
           </Link>
           .
+          <Link to="/update" className="link">
+            Magic Mirror
+          </Link>
+          .
         </p>
       </div>
     </>
