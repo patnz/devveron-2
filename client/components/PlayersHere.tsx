@@ -32,7 +32,7 @@ export default function PlayersHere({ socket }: Props) {
   })
 
   return (
-    <div className="player-list-container">
+    <div className="players-here-container">
       <h2>Players {isGlobal ? 'Online' : 'Here'}</h2>
       <ul>
         {(isGlobal
