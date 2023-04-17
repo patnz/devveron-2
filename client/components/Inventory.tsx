@@ -8,9 +8,9 @@ function Inventory({ player }: Props) {
   return (
     <>
       <div className="inventory-container">
-        <details>
+        <details className="inventory-details">
           <summary>Inventory</summary>
-          <ul>
+          <ul className="inventory-list">
             <li>Gold: 20</li>
             <li>Rotten Apple</li>
             <li>Ashes</li>
