@@ -16,9 +16,9 @@ function Inventory({ player }: Props) {
           </div>
           <div className="column">
             <p>{player.gold}</p>
-            {/* Will need to become a map in future, maybe expandable like players here list */}
-            <p>{player.inventory[0]}</p>
-            <p>{player.inventory[1]}</p>
+            {player.inventory.map((item) => (
+              <p key={item}>{item}</p>
+            ))}
           </div>
         </div>
       </div>
