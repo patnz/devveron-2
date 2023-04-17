@@ -10,7 +10,7 @@ exports.up = function (knex) {
     table.text('description')
     table.text('inventory').defaultTo(JSON.stringify(['Ruby', 'Pocketknife']))
     table.text('location').defaultTo('town-square')
-    table.text('progress').defaultTo('{}')
+    table.text('progress').defaultTo(JSON.stringify({ quests: {}, events: {} }))
     table.integer('gold').defaultTo(20)
   })
 }

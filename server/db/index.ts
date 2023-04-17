@@ -11,7 +11,7 @@ export function addPlayer(
       ...player,
       gold: 20,
       location: 'town-square',
-      progress: {},
+      progress: { quests: {}, events: {} },
       inventory: ['Ruby', 'Pocketknife'],
     }))
 }
