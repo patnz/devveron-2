@@ -2,29 +2,60 @@
 
 * {
   box-sizing: border-box;
-  border: 1px solid grey;
-  color:orange;
+  // border: 1px solid #598381;
 }
 
 html, body {
   margin: 0 auto;
-  background-color: #110a01;
+  background-color: #121417;
   display: flex;
   justify-content: center;
+  padding: 20px;
+}
+
+.nav-container {
+  display: flex;
+  color: #D99008;
+  background-color: #302428;
+  justify-content: space-between;
+}
+
+.log-button {
+  height: auto;
+  background-color: #302428;
+  color: #D99008;
 }
 
 .frame-container {
-  background-color: black;
-  color:orange;
+  box-shadow: 0px 0px 5px #D99008;
+  background-color: #302428;
+  color: #B34505;
+  font-weight: bold;
   letter-spacing: 1px;
   font-family: 'Inconsolata', monospace;
   width: 80vw;
+  max-width: 800px;
   height: 80vh;
-  padding: 50px;
-  border: 2px solid #30200c;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr repeat(4, 3fr) 1fr;
-  grid-column-gap: 5px;
-  grid-row-gap: 5px;
+  padding: 5px;
+  border: 2px solid #598381;
+  display: grid; 
+  grid-template-columns: 1fr 1fr .8fr; 
+  grid-template-rows: 0.3fr 1fr 1fr 1fr .3fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "location-name location-name players-here-container"
+    "location-content-container location-content-container players-here-container"
+    "location-content-container location-content-container inventory-container"
+    "location-content-container location-content-container chat-container"
+    "location-content-container location-content-container chat-container";  
 }
+
+.location-name { grid-area: location-name;
+border: 2px solid #598381; padding: 5px;
+text-align: center; }
+.location-content-container { grid-area: location-content-container; border: 2px solid #598381; padding: 15px; line-height: 25px; }
+.chat-container { 
+  grid-area: chat-container; border: 2px solid #598381; padding: 5px; }
+.inventory-container { grid-area: inventory-container; border: 2px solid #598381; padding: 5px; }
+.players-here-container { grid-area: players-here-container; border: 2px solid #598381; padding: 5px; }
+

@@ -27,7 +27,8 @@ export default function PlayersHere({ socket }: Props) {
   })
 
   return (
-    <div className="player-list-container">
+    <div className="players-here-container">
+      <h1>Players currently online:</h1>
       <ul>
         {users.map((user) => (
           <li key={user.id}>

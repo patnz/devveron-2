@@ -18,10 +18,10 @@ function Salon({ player, setPlayer, goto }: Props) {
   // }
   return (
     <>
-      <div className="location">
+      <div className="location-name">
         <h2>The Salon</h2>
       </div>
-      <div className="entry">
+      <div className="location-content-container">
         <p>
           Welcome to the Salon, where you can change your character attributes
           in the{' '}
