@@ -3,15 +3,10 @@ import { Link } from 'react-router-dom'
 
 interface Props {
   player: Player
-  setPlayer: Function
+  setPlayer: (player: Player) => void
 }
 
 function Salon({ player, setPlayer }: Props) {
-  // Locations
-  const goTownSquare = () => {
-    player.location = 'town-square'
-    setPlayer(player)
-  }
   return (
     <>
       <div className="location">
@@ -25,7 +20,7 @@ function Salon({ player, setPlayer }: Props) {
             Magic Mirror
           </Link>
           . Behind you is the door leading you back to the{' '}
-          <Link to="/loc/town-square" onClick={goTownSquare} className="link">
+          <Link to="/loc/town-square" className="link">
             Town Square
           </Link>
           .

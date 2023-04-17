@@ -3,15 +3,10 @@ import { Link } from 'react-router-dom'
 
 interface Props {
   player: Player
-  setPlayer: Function
+  setPlayer: (player: Player) => void
 }
 
 function Tavern({ player, setPlayer }: Props) {
-  // Locations
-  const goTownSquare = () => {
-    player.location = 'town-square'
-    setPlayer(player)
-  }
   return (
     <>
       <div className="location">
@@ -25,7 +20,7 @@ function Tavern({ player, setPlayer }: Props) {
           order, there is a [Thug] lurking by the stairs and a [Merchant] sits
           at a window seat with many empty glasses in front of him. Behind you
           is the door leading out to the{' '}
-          <Link to="/loc/town-square" onClick={goTownSquare} className="link">
+          <Link to="/loc/town-square" className="link">
             Town Square
           </Link>
           .

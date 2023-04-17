@@ -17,4 +17,5 @@ export interface ActivePlayer {
   name: string
   pronouns: string
   description: string
+  location: string
 }

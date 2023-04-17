@@ -34,8 +34,21 @@ export function loginHandlers(io: any, socket: any) {
       })
   })
 
-  socket.on('disconnect', (player: Player) => {
+  socket.on('disconnect', () => {
     console.log('leaving')
+    updatePlayer(socket.data)
+      .then(() => {
+        console.log('character logged out')
+        socket.broadcast.emit('player logged out', {
+          id: socket.id,
+          name: socket.data.char_name,
+          location: socket.data.location,
+        })
+      })
+      .catch((err) => {
+        console.log(err.message)
+        io.to(socket.id).emit('error', err.message)
+      })
   })
 
   socket.on('logging out', (player: Player) => {
@@ -45,7 +58,8 @@ export function loginHandlers(io: any, socket: any) {
         console.log('character logged out')
         socket.broadcast.emit('player logged out', {
           id: socket.id,
-          ...socket.info,
+          name: socket.data.char_name,
+          location: socket.data.location,
         })
       })
       .catch((err) => {
@@ -56,23 +70,26 @@ export function loginHandlers(io: any, socket: any) {
 }
 
 export async function playerBroadcast(player: Player, socket: any, io: any) {
-  socket.info = {
-    name: player.char_name,
-    pronouns: player.pronouns,
-    description: player.description,
-  }
+  socket.data = player
   io.to(socket.id).emit('send player data', player)
   socket.broadcast.emit('player logged in', {
     id: socket.id,
-    ...socket.info,
+    name: socket.data.char_name,
+    pronouns: socket.data.pronouns,
+    description: socket.data.description,
+    location: socket.data.location,
   })
+  socket.join(player.location)
   const otherSockets = await socket.broadcast.fetchSockets()
   // console.log(otherSockets)
   io.to(socket.id).emit(
     'online players',
     otherSockets.map((socket: any) => ({
       id: socket.id,
-      ...socket.info,
+      name: socket.data.char_name,
+      pronouns: socket.data.pronouns,
+      description: socket.data.description,
+      location: socket.data.location,
     }))
   )
 }
