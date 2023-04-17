@@ -12,7 +12,7 @@ function Tavern({ player, setPlayer }: Props) {
       <div className="location-name">
         <h2>The Wild Wanderer Tavern</h2>
       </div>
-      <div className="location-content-container">
+      <div className="location-content-container typewriter">
         <p>
           You walk into a brightly lit Tavern, there is a warm fire in the
           hearth and drinks flow freely. The [Barkeeper] looks your way and
