@@ -19,9 +19,11 @@ p {
   margin: none;
 }
 
+
 a {
   color:#598381;
-  border-bottom: 1px solid #b34505;
+  text-decoration: none;
+  border-bottom: 1px solid #be7e06;
 }
 
 a:hover {
@@ -160,6 +162,30 @@ input {
   line-height: 25px;
 }
 
+.location-content {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid #b34505; /* The typwriter cursor */
+  white-space: wrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 5s steps(40, end),
+    // blink-caret .75s step-end infinite;
+}
+
+
+/* The typing effect */
+@keyframes typing {
+  from { height: 0 }
+  to { height: 100% }
+}
+
+/* The typewriter cursor effect */
+// @keyframes blink-caret {
+//   from, to { border-color: transparent }
+//   50% { border-color: orange; }
+// }
+
 
 /////////////////////////////////////////////////////////////
 //////////////////////// INVENTORY //////////////////////////////
@@ -270,7 +296,7 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  overflow: scroll;
+  overflow-y: scroll;
   margin-top: 10px;
 }
 
