@@ -36,6 +36,7 @@ export function loginHandlers(io: any, socket: any) {
 
   socket.on('disconnect', () => {
     console.log('leaving')
+    console.log(socket.data)
     if (socket.data) {
       updatePlayer(socket.data)
         .then(() => {
