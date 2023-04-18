@@ -25,7 +25,7 @@ function Cave({ player, setPlayer }: Props) {
           .
         </p>
         <img
-          src="https://i.guim.co.uk/img/media/43352be36da0eb156e8551d775a57fadba8ae6d7/0_0_1440_864/master/1440.jpg"
+          src="https://i.guim.co.uk/img/media/43352be36da0eb156e8551d775a57fadba8ae6d7/0_0_1440_864/master/1440.jpg?width=620&quality=45&dpr=2&s=none"
           alt="cute-kitten"
         />
       </div>
