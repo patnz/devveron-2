@@ -31,8 +31,9 @@ function Church({ player, setPlayer }: Props) {
           strong Integrity, Kindness and Effort. Should you take on this quest,
           the experience received will stand you in good stead for any future
           journey you may have going forward in the world of Devveron.&rdquot;
-          <Link to="/loc/docks" className="link">
-            Docks
+          Go back to the{' '}
+          <Link to="/loc/town-square" className="link">
+            Town Square
           </Link>
           .
         </p>
