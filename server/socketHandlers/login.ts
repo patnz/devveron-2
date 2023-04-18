@@ -54,9 +54,9 @@ export function loginHandlers(io: any, socket: any) {
     }
   })
 
-  socket.on('logging out', (player: Player) => {
+  socket.on('logging out', () => {
     console.log('bye')
-    updatePlayer(player)
+    updatePlayer(socket.data)
       .then(() => {
         console.log('character logged out')
         socket.broadcast.emit('player logged out', {
