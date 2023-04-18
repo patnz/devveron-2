@@ -29,7 +29,7 @@ function TownSquare({ player, updateEvents, addItems }: Props) {
 
   const getFalcon = useCallback(() => {
     addItems(['Millennium Falcon'])
-    updateEvents({ foundFalcon: true })
+    updateEvents({ foundFalcon: true, gaveFalcon: false })
   }, [addItems, updateEvents])
 
   return (
