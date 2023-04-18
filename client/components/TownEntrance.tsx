@@ -19,7 +19,7 @@ function TownEntrance({ player, setPlayer }: Props) {
           <Link to="/loc/adventurer-camp" className="link">
             Adventurer Camp
           </Link>{' '}
-          just outside the walls of the town, and there is a quaint little
+          just outside the walls of the town, and there is a quaint little{' '}
           <Link to="/loc/quarry" className="link">
             Rock Quarry
           </Link>{' '}
