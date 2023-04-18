@@ -29,14 +29,14 @@ function Tavern({ player, setPlayer }: Props) {
           Further down along you see a stragly Pirate who looks like he has been
           out on sea for a long time. He has luscous flowing beard and mane that
           belies a man of great adventure and joy. Peg legged, he has a putting
-          golf club for a foot. Pirate Josh: &ldquot;Argggggggggghhhhhh me
+          golf club for a foot. Pirate Josh: &ldquo;Argggggggggghhhhhh me
           mateyyyy, whatch brings u here to this fine Taaaavern!!!!!? I am here
           in the Tavern resting before I go out again to hang out with me mateys
           out on the Golf Course. Did I tell you I love Golf? Unfortunately, I
           got super steamed yesterday and have lost my favourite Nine Iron club
           and was wondering if you could possibly locate it and return it to me!
           I may have left it at the Town Entrance but I am not so sure? Can you
-          please help?&rdquot;{' '}
+          please help?&rdquo;{' '}
         </p>
       </div>
     </>
