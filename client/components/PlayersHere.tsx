@@ -21,6 +21,10 @@ export default function PlayersHere({ socket }: Props) {
   })
 
   socket.on('player used mirror', (player) => {
+    console.log(
+      player.id,
+      users.map((user) => user.id)
+    )
     setUsers(users.map((user) => (user.id === player.id ? player : user)))
   })
 

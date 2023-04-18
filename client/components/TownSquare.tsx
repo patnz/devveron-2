@@ -44,22 +44,22 @@ function TownSquare({ player, setPlayer, addItems, updateEvents }: Props) {
             <p>
               Street Urchin Pat:{' '}
               <span className="npc-quote">
-                “Welcome fellow traveller, to our land of Devveron”
+                &ldquo;Welcome fellow traveller, to our land of Devveron&rdquo;
               </span>
               ...{' '}
               <span className="npc-quote">
-                “You look a little lost and confused right now but be sure that
-                you are in a safe place”
+                &ldquo;You look a little lost and confused right now but be sure
+                that you are in a safe place&rdquo;
               </span>
               ...
               <span className="npc-quote">
-                “There are many things to see and learn about in Devveron so
-                please have a look about And have an adventure!”
+                &ldquo;There are many things to see and learn about in Devveron
+                so please have a look about And have an adventure!&rdquo;
               </span>
               ...{' '}
               <span className="npc-quote">
-                “If you have the time, traveller - you ought to go to the Docks
-                and see my friend Mayor Kelly..."
+                &ldquo;If you have the time, traveller - you ought to go to the
+                Docks and see my friend Mayor Kelly...&rdquo;
               </span>
             </p>
 
@@ -73,15 +73,15 @@ function TownSquare({ player, setPlayer, addItems, updateEvents }: Props) {
           <div className="location-content typerwriter">
             <p className="townsquare-content-2 typewriter">
               <span className="npc-quote">
-                "...should you go see them, I would really appreciate you
+                &ldquo;...should you go see them, I would really appreciate you
                 deliver them a package consisting of a Lego set of the Millenium
-                Falcon"
+                Falcon&rdquo;
               </span>
               ...{' '}
               <p className="npc-quote">
-                "The Mayor has been hiding Lego stashes around the world of
-                Devveron so if you find any further Lego, please deliver it to
-                the Mayor for a nice gold reward!”
+                &ldquo;The Mayor has been hiding Lego stashes around the world
+                of Devveron so if you find any further Lego, please deliver it
+                to the Mayor for a nice gold reward!&rdquo;
               </p>
             </p>
             {player.progress.events.foundFalcon ? (
