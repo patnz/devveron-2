@@ -24,6 +24,9 @@ function Tavern({ player, setPlayer }: Props) {
             Town Square
           </Link>
           .
+          <Link to="/loc/itemshop" className="link">
+            Item Shop
+          </Link>
         </p>
         <p>
           Further down along you see a stragly Pirate who looks like he has been
