@@ -56,10 +56,11 @@ function App() {
   // Custom functions to be passed into the components, to replace setPlayer
 
   const addGold = (gold: number) => {
-    gold = player.gold + gold
-    setPlayer({ ...player, gold })
-    socket.emit('update gold', gold)
+    player.gold += gold
+    setPlayer(player)
+    socket.emit('update gold', player.gold)
   }
+
   const updateQuests = (quests: Record<string, number>) => {
     const progress = {
       ...player.progress,
@@ -147,7 +148,13 @@ function App() {
             />
             <Route
               path="docks"
-              element={<Docks player={player} setPlayer={setPlayer} />}
+              element={
+                <Docks
+                  player={player}
+                  setPlayer={setPlayer}
+                  addItems={addItems}
+                />
+              }
             />
             <Route
               path="town-entrance"
@@ -159,7 +166,13 @@ function App() {
             />
             <Route
               path="quarry"
-              element={<Quarry player={player} setPlayer={setPlayer} />}
+              element={
+                <Quarry
+                  player={player}
+                  setPlayer={setPlayer}
+                  addGold={addGold}
+                />
+              }
             />
             <Route
               path="woods"
