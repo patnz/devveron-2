@@ -1,12 +1,23 @@
 import { Player } from '../../models/player'
 import { Link } from 'react-router-dom'
+import { ChangeEvent, useState } from 'react'
 
 interface Props {
   player: Player
   setPlayer: (player: Player) => void
+  addItems: (items: string[]) => void
 }
 
-function Docks({ player, setPlayer }: Props) {
+function Docks({ player, setPlayer, addItems }: Props) {
+  const dockitem = 'Millenium Falcon'
+  const [useNewItem, setNewItem] = useState({
+    items: player.inventory,
+  })
+
+  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setNewItem({ ...useNewItem, [e.target.id]: dockitem })
+  }
+
   return (
     <>
       <div className="location-name">
@@ -30,6 +41,7 @@ function Docks({ player, setPlayer }: Props) {
           </Link>
           .
         </p>
+        <div></div>
       </div>
     </>
   )

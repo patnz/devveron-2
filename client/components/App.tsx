@@ -12,6 +12,7 @@ import TownSquare from './TownSquare'
 import Tavern from './Tavern'
 import Salon from './Salon'
 import EditPlayer from './EditPlayer'
+import Woods from './Woods'
 
 const url = 'http://localhost:3000'
 
@@ -73,12 +74,12 @@ function App() {
     })
     socket.emit('update progress', progress)
   }
-  const addItem = (items: string[]) => {
+  const addItems = (items: string[]) => {
     const inventory = [...player.inventory, ...items]
     setPlayer({ ...player, inventory })
     socket.emit('update inventory', inventory)
   }
-  const removeItem = (items: string[]) => {
+  const removeItems = (items: string[]) => {
     const inventory = player.inventory.filter((i) => !items.includes(i))
     setPlayer({ ...player, inventory })
     socket.emit('update inventory', inventory)
@@ -125,8 +126,13 @@ function App() {
                   player={player}
                   updateEvents={updateEvents}
                   socket={socket}
+                  addItems={addItems}
                 />
               }
+            />
+            <Route
+              path="woods"
+              element={<Woods player={player} addItems={addItems} />}
             />
           </Route>
         </Routes>

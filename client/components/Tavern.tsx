@@ -36,7 +36,7 @@ function Tavern({ player, setPlayer }: Props) {
           got super steamed yesterday and have lost my favourite Nine Iron club
           and was wondering if you could possibly locate it and return it to me!
           I may have left it at the Town Entrance but I am not so sure? Can you
-          please help?&rdquo;{' '}
+          please help?&rdquo;
         </p>
       </div>
     </>
