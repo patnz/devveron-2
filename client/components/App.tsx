@@ -20,7 +20,6 @@ import AdventurerCamp from './AdventurerCamp'
 import Quarry from './Quarry'
 import Woods from './Woods'
 import Castle from './Castle'
-import Template from './template'
 import Cave from './Cave'
 
 const url = 'http://localhost:3000'
