@@ -37,7 +37,7 @@ export function loginHandlers(io: any, socket: any) {
   socket.on('disconnect', () => {
     console.log('leaving')
     console.log(socket.data)
-    if (socket.data) {
+    if (socket.data.char_name) {
       updatePlayer(socket.data)
         .then(() => {
           console.log('character logged out')
@@ -70,9 +70,24 @@ export function loginHandlers(io: any, socket: any) {
         io.to(socket.id).emit('error', err.message)
       })
   })
+
+  socket.on('get online players', async () => {
+    const otherSockets = await socket.broadcast.fetchSockets()
+    // console.log(otherSockets)
+    io.to(socket.id).emit(
+      'online players',
+      otherSockets.map((socket: any) => ({
+        id: socket.id,
+        name: socket.data.char_name,
+        pronouns: socket.data.pronouns,
+        description: socket.data.description,
+        location: socket.data.location,
+      }))
+    )
+  })
 }
 
-export async function playerBroadcast(player: Player, socket: any, io: any) {
+export function playerBroadcast(player: Player, socket: any, io: any) {
   socket.data = player
   io.to(socket.id).emit('send player data', player)
   socket.broadcast.emit('player logged in', {
@@ -83,16 +98,4 @@ export async function playerBroadcast(player: Player, socket: any, io: any) {
     location: socket.data.location,
   })
   socket.join(player.location)
-  const otherSockets = await socket.broadcast.fetchSockets()
-  // console.log(otherSockets)
-  io.to(socket.id).emit(
-    'online players',
-    otherSockets.map((socket: any) => ({
-      id: socket.id,
-      name: socket.data.char_name,
-      pronouns: socket.data.pronouns,
-      description: socket.data.description,
-      location: socket.data.location,
-    }))
-  )
 }

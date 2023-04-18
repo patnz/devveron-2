@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { Socket } from 'socket.io-client'
 import { Player } from '../../models/player'
 import { useNavigate } from 'react-router-dom'
@@ -24,9 +24,10 @@ function EditPlayer({ socket, player, setPlayer }: Props) {
 
   const clickHandler = (e: FormEvent) => {
     e.preventDefault()
-    setPlayer({ ...player, ...editFormData })
+    const updated = { ...player, ...editFormData }
+    setPlayer(updated)
     if (player.user) {
-      socket.emit('update character', player)
+      socket.emit('update character', updated)
     } else {
       // it shouldn't be possible to see this component w/out a primary key but we should probably signal something here
       alert('Invalid user, not updated on database.')
