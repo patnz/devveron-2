@@ -6,18 +6,10 @@ interface Props {
   player: Player
   setPlayer: (player: Player) => void
   addItems: (items: string[]) => void
+  updateEvents: (events: Record<string, boolean>) => void
 }
 
-function Docks({ player, setPlayer, addItems }: Props) {
-  const dockitem = 'Millenium Falcon'
-  const [useNewItem, setNewItem] = useState({
-    items: player.inventory,
-  })
-
-  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setNewItem({ ...useNewItem, [e.target.id]: dockitem })
-  }
-
+function Docks({ player, setPlayer, addItems, updateEvents }: Props) {
   return (
     <>
       <div className="location-name">
