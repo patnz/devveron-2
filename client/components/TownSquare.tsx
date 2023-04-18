@@ -4,12 +4,11 @@ import { useState, useCallback } from 'react'
 
 interface Props {
   player: Player
-  updateEvents: (events: Record<string, boolean>) => void
   addItems: (items: string[]) => void
   updateEvents: (events: Record<string, boolean>) => void
 }
 
-function TownSquare({ player, updateEvents }: Props) {
+function TownSquare({ player, updateEvents, addItems }: Props) {
   const [contentStage, setContentStage] = useState(
     player.progress.events.metPat ? 3 : 0
   )
