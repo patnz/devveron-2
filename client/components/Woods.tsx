@@ -49,7 +49,7 @@ function Woods({ player, addItems, updateEvents }: Props) {
         {player.progress.events.foundClub ? (
           <p>You found Josh&apos;s Nine Iron here.</p>
         ) : (
-          <button onClick={getClub}>
+          <button className="action-text-button" onClick={getClub}>
             Grab the Nine Iron Club on the ground?
           </button>
         )}
