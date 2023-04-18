@@ -29,9 +29,24 @@ function TownSquare({ player, setPlayer }: Props) {
           <Link to="/loc/salon" className="link">
             Salon
           </Link>
-          , a [Church] and a [Item Shop] among the buildings. There is a [Road]
-          off to the side which leads down to the Docks and Slum area, and
-          behind you is the road leading [Out of Town]
+          , a{' '}
+          <Link to="/loc/church" className="link">
+            Church
+          </Link>{' '}
+          and a{' '}
+          <Link to="/loc/item-shop" className="link">
+            Item Shop
+          </Link>{' '}
+          among the buildings. There is a{' '}
+          <Link to="/loc/docks" className="link">
+            Road
+          </Link>{' '}
+          off to the side which leads down to the Docks area, and behind you is
+          the road leading back to the{' '}
+          <Link to="/loc/town-entrance" className="link">
+            Town Entrance
+          </Link>{' '}
+          .
           <p>
             A lowly street urchin appears… Street Urchin Pat: “Welcome fellow
             traveller, to our land of Devveron” “You look a little lost and
