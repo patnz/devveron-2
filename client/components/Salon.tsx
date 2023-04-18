@@ -25,31 +25,33 @@ function Salon({ player, updateEvents, socket }: Props) {
         <h2>The Salon</h2>
       </div>
       <div className="location-content-container">
-        <p>
-          The Salon is a cozy store with a{' '}
-          <Link to="/update" className="link">
-            Magic Mirror
-          </Link>{' '}
-          on the wall.
-        </p>
-        <Patch player={player} updateEvents={updateEvents} />
-        {mirrorUsers.length ? (
+        <div className="location-content">
           <p>
-            {mirrorUsers.slice(0, -1).join(', ') +
-              (mirrorUsers.length > 1 ? ' and ' : '') +
-              mirrorUsers.at(-1)}{' '}
-            {mirrorUsers.length === 1 ? 'is' : 'are'} staring into the mirror.
+            The Salon is a cozy store with a{' '}
+            <Link to="/update" className="link">
+              Magic Mirror
+            </Link>{' '}
+            on the wall.
           </p>
-        ) : (
-          ''
-        )}
-        <p>
-          Behind you is the door leading you back to the{' '}
-          <Link to="/loc/town-square" className="link">
-            Town Square
-          </Link>
-          .
-        </p>
+          <Patch player={player} updateEvents={updateEvents} />
+          {mirrorUsers.length ? (
+            <p>
+              {mirrorUsers.slice(0, -1).join(', ') +
+                (mirrorUsers.length > 1 ? ' and ' : '') +
+                mirrorUsers.at(-1)}{' '}
+              {mirrorUsers.length === 1 ? 'is' : 'are'} staring into the mirror.
+            </p>
+          ) : (
+            ''
+          )}
+          <p>
+            Behind you is the door leading you back to the{' '}
+            <Link to="/loc/town-square" className="link">
+              Town Square
+            </Link>
+            .
+          </p>
+        </div>
       </div>
     </>
   )

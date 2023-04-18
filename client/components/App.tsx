@@ -122,7 +122,9 @@ function App() {
           >
             <Route
               path="town-square"
-              element={<TownSquare player={player} setPlayer={setPlayer} />}
+              element={
+                <TownSquare player={player} updateEvents={updateEvents} />
+              }
             />
             <Route
               path="tavern"
