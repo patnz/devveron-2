@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
 import { Socket } from 'socket.io-client'
 import { Player } from '../../models/player'
 import { useNavigate } from 'react-router-dom'
@@ -17,6 +17,11 @@ function EditPlayer({ socket, player, setPlayer }: Props) {
     pronouns: player.pronouns,
     description: player.description,
   })
+
+  useEffect(() => {
+    socket.emit('using mirror')
+  }, [socket])
+
   const clickHandler = (e: FormEvent) => {
     e.preventDefault()
     setPlayer({ ...player, ...editFormData })
