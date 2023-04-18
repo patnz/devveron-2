@@ -1,6 +1,5 @@
 import express from 'express'
 import path from 'path'
-import { Message } from '../models/messages'
 import { loginHandlers } from './socketHandlers/login'
 import { navHandlers } from './socketHandlers/nav'
 import { chatHandlers } from './socketHandlers/chat'

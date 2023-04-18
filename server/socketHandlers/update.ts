@@ -1,4 +1,5 @@
 import { Player, Progress } from '../../models/player'
+import { roomStates } from './state'
 
 export function updateHandlers(io: any, socket: any) {
   socket.on('update inventory', (inventory: string[]) => {
@@ -15,6 +16,12 @@ export function updateHandlers(io: any, socket: any) {
 
   socket.on('update character', (player: Player) => {
     console.log('Update in the Magic Mirror')
+    roomStates.salon.charsUsingMirror =
+      roomStates.salon.charsUsingMirror.filter(
+        (name) => name !== socket.data.char_name
+      )
+    console.log(roomStates.salon.charsUsingMirror)
+    io.to('salon').emit('room state', roomStates.salon)
     socket.data = player
     socket.broadcast.emit('player used mirror', {
       id: socket.id,

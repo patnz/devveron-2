@@ -4,10 +4,9 @@ import { Player } from '../../models/player'
 interface Props {
   player: Player
   updateEvents: (events: Record<string, boolean>) => void
-  socket: any
 }
 
-export default function Patch({ player, updateEvents, socket }: Props) {
+export default function Patch({ player, updateEvents }: Props) {
   const {
     progress: { events },
   } = player
