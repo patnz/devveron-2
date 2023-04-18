@@ -56,10 +56,11 @@ function App() {
   // Custom functions to be passed into the components, to replace setPlayer
 
   const addGold = (gold: number) => {
-    gold = player.gold + gold
-    setPlayer({ ...player, gold })
-    socket.emit('update gold', gold)
+    player.gold += gold
+    setPlayer(player)
+    socket.emit('update gold', player.gold)
   }
+
   const updateQuests = (quests: Record<string, number>) => {
     const progress = {
       ...player.progress,
@@ -82,12 +83,12 @@ function App() {
     })
     socket.emit('update progress', progress)
   }
-  const addItem = (items: string[]) => {
+  const addItems = (items: string[]) => {
     const inventory = [...player.inventory, ...items]
     setPlayer({ ...player, inventory })
     socket.emit('update inventory', inventory)
   }
-  const removeItem = (items: string[]) => {
+  const removeItems = (items: string[]) => {
     const inventory = player.inventory.filter((i) => !items.includes(i))
     setPlayer({ ...player, inventory })
     socket.emit('update inventory', inventory)
@@ -147,7 +148,13 @@ function App() {
             />
             <Route
               path="docks"
-              element={<Docks player={player} setPlayer={setPlayer} />}
+              element={
+                <Docks
+                  player={player}
+                  setPlayer={setPlayer}
+                  addItems={addItems}
+                />
+              }
             />
             <Route
               path="town-entrance"
@@ -159,11 +166,23 @@ function App() {
             />
             <Route
               path="quarry"
-              element={<Quarry player={player} setPlayer={setPlayer} />}
+              element={
+                <Quarry
+                  player={player}
+                  setPlayer={setPlayer}
+                  addGold={addGold}
+                />
+              }
             />
             <Route
               path="woods"
-              element={<Woods player={player} setPlayer={setPlayer} />}
+              element={
+                <Woods
+                  player={player}
+                  addItems={addItems}
+                  updateEvents={updateEvents}
+                />
+              }
             />
             <Route
               path="castle"
