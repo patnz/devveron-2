@@ -36,19 +36,22 @@ export function loginHandlers(io: any, socket: any) {
 
   socket.on('disconnect', () => {
     console.log('leaving')
-    updatePlayer(socket.data)
-      .then(() => {
-        console.log('character logged out')
-        socket.broadcast.emit('player logged out', {
-          id: socket.id,
-          name: socket.data.char_name,
-          location: socket.data.location,
+    console.log(socket.data)
+    if (socket.data) {
+      updatePlayer(socket.data)
+        .then(() => {
+          console.log('character logged out')
+          socket.broadcast.emit('player logged out', {
+            id: socket.id,
+            name: socket.data.char_name,
+            location: socket.data.location,
+          })
         })
-      })
-      .catch((err) => {
-        console.log(err.message)
-        io.to(socket.id).emit('error', err.message)
-      })
+        .catch((err) => {
+          console.log(err.message)
+          io.to(socket.id).emit('error', err.message)
+        })
+    }
   })
 
   socket.on('logging out', (player: Player) => {

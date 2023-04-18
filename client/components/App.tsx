@@ -12,6 +12,15 @@ import TownSquare from './TownSquare'
 import Tavern from './Tavern'
 import Salon from './Salon'
 import EditPlayer from './EditPlayer'
+import Church from './Church'
+import ItemShop from './ItemShop'
+import Docks from './Docks'
+import TownEntrance from './TownEntrance'
+import AdventurerCamp from './AdventurerCamp'
+import Quarry from './Quarry'
+import Woods from './Woods'
+import Castle from './Castle'
+import Cave from './Cave'
 
 const url = 'http://localhost:3000'
 
@@ -44,6 +53,45 @@ function App() {
     nav('/create')
   })
 
+  // Custom functions to be passed into the components, to replace setPlayer
+
+  const addGold = (gold: number) => {
+    gold = player.gold + gold
+    setPlayer({ ...player, gold })
+    socket.emit('update gold', gold)
+  }
+  const updateQuests = (quests: Record<string, number>) => {
+    const progress = {
+      ...player.progress,
+      quests: { ...player.progress.quests, ...quests },
+    }
+    setPlayer({
+      ...player,
+      progress,
+    })
+    socket.emit('update progress', progress)
+  }
+  const updateEvents = (events: Record<string, boolean>) => {
+    const progress = {
+      ...player.progress,
+      events: { ...player.progress.events, ...events },
+    }
+    setPlayer({
+      ...player,
+      progress,
+    })
+    socket.emit('update progress', progress)
+  }
+  const addItems = (items: string[]) => {
+    const inventory = [...player.inventory, ...items]
+    setPlayer({ ...player, inventory })
+    socket.emit('update inventory', inventory)
+  }
+  const removeItems = (items: string[]) => {
+    const inventory = player.inventory.filter((i) => !items.includes(i))
+    setPlayer({ ...player, inventory })
+    socket.emit('update inventory', inventory)
+  }
   return (
     <>
       <Nav loggingOut={loggingOut} />
@@ -81,7 +129,55 @@ function App() {
             />
             <Route
               path="salon"
-              element={<Salon player={player} setPlayer={setPlayer} />}
+              element={
+                <Salon
+                  player={player}
+                  updateEvents={updateEvents}
+                  socket={socket}
+                />
+              }
+            />
+            <Route
+              path="church"
+              element={<Church player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="item-shop"
+              element={<ItemShop player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="docks"
+              element={<Docks player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="town-entrance"
+              element={<TownEntrance player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="adventurer-camp"
+              element={<AdventurerCamp player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="quarry"
+              element={<Quarry player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="woods"
+              element={
+                <Woods
+                  player={player}
+                  addItems={addItems}
+                  updateEvents={updateEvents}
+                />
+              }
+            />
+            <Route
+              path="castle"
+              element={<Castle player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="cave"
+              element={<Cave player={player} setPlayer={setPlayer} />}
             />
           </Route>
         </Routes>

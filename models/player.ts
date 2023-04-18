@@ -8,7 +8,7 @@ export interface PlayerInfo {
 export interface Player extends PlayerInfo {
   inventory: string[]
   location: string
-  progress: any
+  progress: Progress
   gold: number
 }
 
@@ -18,4 +18,9 @@ export interface ActivePlayer {
   pronouns: string
   description: string
   location: string
+}
+
+export interface Progress {
+  quests: Record<string, number>
+  events: Record<string, boolean>
 }

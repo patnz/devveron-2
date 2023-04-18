@@ -34,7 +34,7 @@ function NewPlayer({ socket }: Props) {
 
   return (
     <>
-      <div className="new-player">
+      <div className="new-player-container">
         <h2>Please create your character</h2>
         <form onSubmit={submitHandler} className="new-player-form">
           <table>

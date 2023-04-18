@@ -30,11 +30,13 @@ export default function Frame({ socket, player, setPlayer }: Props) {
 
   return (
     <>
-      <Header />
-      <Outlet />
-      <PlayersHere socket={socket} />
-      <Inventory player={player} />
-      <Chat socket={socket} />
+      <section className="frame-container">
+        {/* <Header /> */}
+        {player.char_name ? <Outlet /> : <p>Loading...</p>}
+        <PlayersHere socket={socket} />
+        <Inventory player={player} />
+        <Chat socket={socket} />
+      </section>
     </>
   )
 }
