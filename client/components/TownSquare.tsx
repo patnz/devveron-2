@@ -10,9 +10,14 @@ interface Props {
 function TownSquare({ player, setPlayer }: Props) {
   const [contentStage, setContentStage] = useState(0)
 
-  const handleClick = () => {
+  const handleClickNext = () => {
     if (contentStage < 2) {
       setContentStage(contentStage + 1)
+    }
+  }
+  const handleClickBack = () => {
+    if (contentStage > 0) {
+      setContentStage(contentStage - 1)
     }
   }
   return (
@@ -25,15 +30,31 @@ function TownSquare({ player, setPlayer }: Props) {
           <div className="location-content typerwriter">
             <p className="townsquare-content-1 typewriter">
               You see a group of dimly lit buildings around a central fountain.
-              A lowly street urchin appears… Street Urchin Pat: “Welcome fellow
-              traveller, to our land of Devveron” “You look a little lost and
-              confused right now but be sure that you are in a safe place.”
-              “There are many things to see and learn about in Devveron so
-              please have a look about And have an adventure!” “If you have the
-              time, traveller - you ought to go to the Docks and see my friend
-              Mayor Kelly.
+              A lowly street urchin appears...
             </p>
-            <button className="next-content-button" onClick={handleClick}>
+            <p>
+              Street Urchin Pat:{' '}
+              <span className="npc-quote">
+                “Welcome fellow traveller, to our land of Devveron”
+              </span>
+              ...{' '}
+              <span className="npc-quote">
+                “You look a little lost and confused right now but be sure that
+                you are in a safe place”
+              </span>
+              ...
+              <span className="npc-quote">
+                “There are many things to see and learn about in Devveron so
+                please have a look about And have an adventure!”
+              </span>
+              ...{' '}
+              <span className="npc-quote">
+                “If you have the time, traveller - you ought to go to the Docks
+                and see my friend Mayor Kelly..."
+              </span>
+            </p>
+
+            <button className="next-content-button" onClick={handleClickNext}>
               ⮕
             </button>
           </div>
@@ -42,13 +63,22 @@ function TownSquare({ player, setPlayer }: Props) {
         {contentStage === 1 && (
           <div className="location-content typerwriter">
             <p className="townsquare-content-2 typewriter">
-              Should you go see them, I would really appreciate you deliver them
-              a package consisting of a Lego set of the Millenium Falcon. The
-              Mayor has been hiding Lego stashes around the world of Devveron so
-              if you find any further Lego, please deliver it to the Mayor for a
-              nice gold reward!”
+              <span className="npc-quote">
+                "...should you go see them, I would really appreciate you
+                deliver them a package consisting of a Lego set of the Millenium
+                Falcon"
+              </span>
+              ...{' '}
+              <p className="npc-quote">
+                "The Mayor has been hiding Lego stashes around the world of
+                Devveron so if you find any further Lego, please deliver it to
+                the Mayor for a nice gold reward!”
+              </p>
             </p>
-            <button className="next-content-button" onClick={handleClick}>
+            <button className="back-content-button" onClick={handleClickBack}>
+              ⬅
+            </button>
+            <button className="next-content-button" onClick={handleClickNext}>
               ⮕
             </button>
           </div>
@@ -69,6 +99,9 @@ function TownSquare({ player, setPlayer }: Props) {
               [Road] off to the side which leads down to the Docks and Slum
               area, and behind you is the road leading [Out of Town]
             </p>
+            <button className="back-content-button" onClick={handleClickBack}>
+              ⬅
+            </button>
           </div>
         )}
       </div>
