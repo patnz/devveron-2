@@ -33,13 +33,13 @@ function Docks({ player, setPlayer, addItems }: Props) {
             Town Square
           </Link>
           . At the corner of your eye you spy someone that looks authoritative
-          but friendly! Mayor Kelly: “Hello Traveller and welcome to the Docks!
-          The route to get here must have been easy to GET to. We are querying
-          with contractors about building a newer route here so that the people
-          of Devveron can get things from the dock a lot more faster and
-          efficiently. By chance, were you sent here by Pat the Street Urchin? I
-          am wondering whether you have an item I had stashed at Pat’s, the
-          mythical Lego set of the Millenium Falcon?”
+          but friendly! Mayor Kelly: &ldquo;Hello Traveller and welcome to the
+          Docks! The route to get here must have been easy to GET to. We are
+          querying with contractors about building a newer route here so that
+          the people of Devveron can get things from the dock a lot more faster
+          and efficiently. By chance, were you sent here by Pat the Street
+          Urchin? I am wondering whether you have an item I had stashed at
+          Pat&apos;s, the mythical Lego set of the Millenium Falcon?&rdquo;
         </p>
         <div></div>
       </div>
