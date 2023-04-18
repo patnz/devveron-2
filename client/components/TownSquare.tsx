@@ -28,6 +28,7 @@ function TownSquare({ player, setPlayer }: Props) {
       <div className="location-content-container">
         {contentStage === 0 && (
           <div className="location-content typerwriter">
+            <Link to={'/loc/woods'}>Woods</Link>
             <p className="townsquare-content-1 typewriter">
               You see a group of dimly lit buildings around a central fountain.
               A lowly street urchin appears...

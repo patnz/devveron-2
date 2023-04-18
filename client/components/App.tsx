@@ -82,12 +82,12 @@ function App() {
     })
     socket.emit('update progress', progress)
   }
-  const addItem = (items: string[]) => {
+  const addItems = (items: string[]) => {
     const inventory = [...player.inventory, ...items]
     setPlayer({ ...player, inventory })
     socket.emit('update inventory', inventory)
   }
-  const removeItem = (items: string[]) => {
+  const removeItems = (items: string[]) => {
     const inventory = player.inventory.filter((i) => !items.includes(i))
     setPlayer({ ...player, inventory })
     socket.emit('update inventory', inventory)
@@ -163,7 +163,13 @@ function App() {
             />
             <Route
               path="woods"
-              element={<Woods player={player} setPlayer={setPlayer} />}
+              element={
+                <Woods
+                  player={player}
+                  addItems={addItems}
+                  updateEvents={updateEvents}
+                />
+              }
             />
             <Route
               path="castle"
