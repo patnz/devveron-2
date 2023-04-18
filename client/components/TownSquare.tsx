@@ -11,7 +11,9 @@ function TownSquare({ player, setPlayer }: Props) {
   const [contentStage, setContentStage] = useState(0)
 
   const handleClick = () => {
-    setContentStage(contentStage + 1)
+    if (contentStage < 2) {
+      setContentStage(contentStage + 1)
+    }
   }
   return (
     <>
@@ -19,8 +21,8 @@ function TownSquare({ player, setPlayer }: Props) {
         <h2>Metellicana Town Square</h2>
       </div>
       <div className="location-content-container">
-        <div className="location-content typerwriter">
-          {contentStage === 0 && (
+        {contentStage === 0 && (
+          <div className="location-content typerwriter">
             <p className="townsquare-content-1 typewriter">
               You see a group of dimly lit buildings around a central fountain.
               A lowly street urchin appears… Street Urchin Pat: “Welcome fellow
@@ -30,22 +32,30 @@ function TownSquare({ player, setPlayer }: Props) {
               please have a look about And have an adventure!” “If you have the
               time, traveller - you ought to go to the Docks and see my friend
               Mayor Kelly.
-              <button onClick={handleClick}>next</button>
             </p>
-          )}
+            <button className="next-content-button" onClick={handleClick}>
+              ⮕
+            </button>
+          </div>
+        )}
 
-          {contentStage === 1 && (
+        {contentStage === 1 && (
+          <div className="location-content typerwriter">
             <p className="townsquare-content-2 typewriter">
               Should you go see them, I would really appreciate you deliver them
               a package consisting of a Lego set of the Millenium Falcon. The
               Mayor has been hiding Lego stashes around the world of Devveron so
               if you find any further Lego, please deliver it to the Mayor for a
               nice gold reward!”
-              <button onClick={handleClick}>next</button>
             </p>
-          )}
+            <button className="next-content-button" onClick={handleClick}>
+              ⮕
+            </button>
+          </div>
+        )}
 
-          {contentStage === 2 && (
+        {contentStage === 2 && (
+          <div className="location-content typerwriter">
             <p className="townsquare-content-3 typewriter">
               You can see a{' '}
               <Link to="/loc/tavern" className="link">
@@ -58,10 +68,9 @@ function TownSquare({ player, setPlayer }: Props) {
               , a [Church] and a [Item Shop] among the buildings. There is a
               [Road] off to the side which leads down to the Docks and Slum
               area, and behind you is the road leading [Out of Town]
-              <button onClick={handleClick}>next</button>
             </p>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </>
   )

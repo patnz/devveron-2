@@ -99,6 +99,37 @@ input {
   align-self: center;
 }
 
+/////////////////////////////////////////////////////////////////////
+////////////////////// BUTTONS //////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+.next-content-button {
+  opacity: 0;
+  animation-name: show-button;
+  animation-duration: 2s;
+  animation-delay: 6s;
+  animation-fill-mode: forwards;
+  position: absolute;
+  bottom: 10px;
+  ///////////
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  background-color: inherit;
+  color: #f8a50b;
+  box-shadow: 0px 0px 5px #598381;
+  align-self: center;
+}
+
+@keyframes show-button {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .log-button:hover,
 .new-player-button:hover,
 .edit-player-button:hover {
@@ -155,23 +186,26 @@ input {
 //////////////////////////////////////////////////////////////
 
 .location-content-container {
-  font-size: .8em;
+  position: relative;
+  font-size: 1vw;
   grid-area: location-content-container;
   border: 2px solid #598381;
   padding: 15px;
-  line-height: 25px;
+  padding-right: 25px;
+  line-height: 30px;
   overflow-y:scroll;
+
 }
 
 .location-content {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid #b34505; /* The typwriter cursor */
+  // border-right: .15em solid #b34505; /* The typwriter cursor */
   white-space: wrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .15em; /* Adjust as needed */
   animation: 
     typing 5s steps(40, end),
-    // blink-caret .75s step-end infinite;
+    // blink-caret .75s step-end;
 }
 
 
@@ -180,13 +214,6 @@ input {
   from { height: 0 }
   to { height: 100% }
 }
-
-/* The typewriter cursor effect */
-// @keyframes blink-caret {
-//   from, to { border-color: transparent }
-//   50% { border-color: orange; }
-// }
-
 
 /////////////////////////////////////////////////////////////
 //////////////////////// INVENTORY //////////////////////////////
