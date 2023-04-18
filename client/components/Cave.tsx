@@ -14,6 +14,9 @@ function Cave({ player, setPlayer }: Props) {
       </div>
       <div className="location-content-container">
         <p>
+        &#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;
+        </p>
+        <p>
           Welcome to the Kitty Cat Cave! The cutest place in all the land -
           there are hundreds of kittens in this cave, all super friendly and
           happy. The local hunters keep the cats fed, and the local children
@@ -24,10 +27,9 @@ function Cave({ player, setPlayer }: Props) {
           </Link>
           .
         </p>
-        <img
-          src="https://i.guim.co.uk/img/media/43352be36da0eb156e8551d775a57fadba8ae6d7/0_0_1440_864/master/1440.jpg?width=620&quality=45&dpr=2&s=none"
-          alt="cute-kitten"
-        />
+        <p>
+          &#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;&#x1f43e;
+          </p>
       </div>
     </>
   )
