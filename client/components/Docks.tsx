@@ -1,22 +1,27 @@
 import { Player } from '../../models/player'
 import { Link } from 'react-router-dom'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useCallback, useState } from 'react'
 
 interface Props {
   player: Player
   setPlayer: (player: Player) => void
-  addItems: (items: string[]) => void
+  addGold: (gold: number) => void
+  removeItems: (items: string[]) => void
+  updateEvents: (events: Record<string, boolean>) => void
 }
 
-function Docks({ player, setPlayer, addItems }: Props) {
-  const dockitem = 'Millenium Falcon'
-  const [useNewItem, setNewItem] = useState({
-    items: player.inventory,
-  })
-
-  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setNewItem({ ...useNewItem, [e.target.id]: dockitem })
-  }
+function Docks({
+  player,
+  setPlayer,
+  removeItems,
+  updateEvents,
+  addGold,
+}: Props) {
+  const giveFalcon = useCallback(() => {
+    removeItems(['Millennium Falcon'])
+    addGold(40)
+    updateEvents({ gaveFalcon: true })
+  }, [])
 
   return (
     <>
@@ -41,7 +46,13 @@ function Docks({ player, setPlayer, addItems }: Props) {
           Urchin? I am wondering whether you have an item I had stashed at
           Pat&apos;s, the mythical Lego set of the Millenium Falcon?&rdquo;
         </p>
-        <div></div>
+        {player.progress.events.gaveFalcon ? (
+          <p>You have found Kelly!</p>
+        ) : (
+          <button onClick={giveFalcon}>
+            Give the Millenium Falcon Lego Set to Kelly?
+          </button>
+        )}
       </div>
     </>
   )

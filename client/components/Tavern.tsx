@@ -32,6 +32,9 @@ function Tavern({ player, removeItems, addGold, updateEvents }: Props) {
             Town Square
           </Link>
           .
+          <Link to="/loc/itemshop" className="link">
+            Item Shop
+          </Link>
         </p>
         <p>
           Further down along you see a straggly Pirate who looks like he has

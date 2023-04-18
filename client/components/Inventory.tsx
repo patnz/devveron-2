@@ -1,19 +1,18 @@
-import { Player } from '../../models/player'
-
 interface Props {
-  player: Player
+  inventory: string[]
+  gold: number
 }
 
-function Inventory({ player }: Props) {
+function Inventory({ inventory, gold }: Props) {
   return (
     <>
       <div className="inventory-container">
         <details className="inventory-details">
           <summary>Inventory</summary>
           <ul className="inventory-list">
-            <li className="inventory-item">Gold: {player.gold}</li>
-            {player.inventory &&
-              player.inventory.map((item) => (
+            <li className="inventory-item">${gold}</li>
+            {inventory &&
+              inventory.map((item) => (
                 <li className="inventory-item" key={item}>
                   {item}
                 </li>
