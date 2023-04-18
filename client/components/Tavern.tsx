@@ -34,9 +34,9 @@ function Tavern({ player, setPlayer }: Props) {
           in the Tavern resting before I go out again to hang out with me mateys
           out on the Golf Course. Did I tell you I love Golf? Unfortunately, I
           got super steamed yesterday and have lost my favourite Nine Iron club
-          and was wondering if you could possibly locate it and return it to me!
-          I may have left it at the Town Entrance but I am not so sure? Can you
-          please help?&rdquo;
+          somewhere in the woods perhaps? and was wondering if you could
+          possibly locate it and return it to me! I may have left it at the Town
+          Entrance but I am not so sure? Can you please help?&rdquo;
         </p>
       </div>
     </>

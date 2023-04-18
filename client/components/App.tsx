@@ -126,13 +126,18 @@ function App() {
                   player={player}
                   updateEvents={updateEvents}
                   socket={socket}
-                  addItems={addItems}
                 />
               }
             />
             <Route
               path="woods"
-              element={<Woods player={player} addItems={addItems} />}
+              element={
+                <Woods
+                  player={player}
+                  addItems={addItems}
+                  updateEvents={updateEvents}
+                />
+              }
             />
           </Route>
         </Routes>
