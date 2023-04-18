@@ -18,6 +18,9 @@ function TownEntrance({ player, setPlayer }: Props) {
           <Link to="/loc/town-entrance" className="link">
             Town Entrance
           </Link>
+          <Link to="/loc/woods" className="link">
+            Woods
+          </Link>
           .
         </p>
       </div>
