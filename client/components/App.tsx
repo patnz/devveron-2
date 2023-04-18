@@ -12,7 +12,15 @@ import TownSquare from './TownSquare'
 import Tavern from './Tavern'
 import Salon from './Salon'
 import EditPlayer from './EditPlayer'
+import Church from './Church'
+import ItemShop from './ItemShop'
+import Docks from './Docks'
+import TownEntrance from './TownEntrance'
+import AdventurerCamp from './AdventurerCamp'
+import Quarry from './Quarry'
 import Woods from './Woods'
+import Castle from './Castle'
+import Cave from './Cave'
 
 const url = 'http://localhost:3000'
 
@@ -130,6 +138,30 @@ function App() {
               }
             />
             <Route
+              path="church"
+              element={<Church player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="item-shop"
+              element={<ItemShop player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="docks"
+              element={<Docks player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="town-entrance"
+              element={<TownEntrance player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="adventurer-camp"
+              element={<AdventurerCamp player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="quarry"
+              element={<Quarry player={player} setPlayer={setPlayer} />}
+            />
+            <Route
               path="woods"
               element={
                 <Woods
@@ -138,6 +170,14 @@ function App() {
                   updateEvents={updateEvents}
                 />
               }
+            />
+            <Route
+              path="castle"
+              element={<Castle player={player} setPlayer={setPlayer} />}
+            />
+            <Route
+              path="cave"
+              element={<Cave player={player} setPlayer={setPlayer} />}
             />
           </Route>
         </Routes>
