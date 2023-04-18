@@ -81,7 +81,7 @@ input {
   border: double 6px #598381;
   letter-spacing: 2px;
   box-shadow: none;
-  transition: box-shadow 2s;
+  transition: box-shadow 1s;
   transition: color 3s;
   border-top-right-radius: 15px;
 }
@@ -94,7 +94,7 @@ input {
   border: solid 3px #b34505;
   letter-spacing: 2px;
   box-shadow: none;
-  transition: box-shadow 2s;
+  transition: box-shadow 1s;
   transition: color 3s;
   align-self: center;
 }
@@ -104,7 +104,7 @@ input {
   opacity: 0;
   animation-name: show-button;
   animation-duration: 2s;
-  animation-delay: 2s;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
   ///////////
   height: 40px;
@@ -113,7 +113,7 @@ input {
   background-color: #302428;
   color: #f8a50b;
   box-shadow: 0px 0px 5px #598381;
-  transition: box-shadow 3s;
+  transition: box-shadow 1s;
   z-index: 3;
   position: absolute;
   bottom: 10px;
@@ -132,6 +132,9 @@ input {
   font-weight: bold;
 }
 
+.quote-icon {
+  color: #f8a50b;
+}
 
 .player-quote {
   color:#f8a50b;
@@ -143,7 +146,7 @@ input {
   opacity: 0;
   animation-name: show-button;
   animation-duration: 2s;
-  animation-delay: 3s;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
   position: absolute;
   bottom: 10px;
@@ -155,11 +158,11 @@ input {
   background-color: #302428;
   color: #f8a50b;
   box-shadow: 0px 0px 5px #598381;
-  transition: box-shadow 3s;
+  transition: box-shadow 1s;
   z-index: 3;
 }
 
-.next-content-button:hover, .back-content-button:hover {
+.next-content-button:hover, .back-content-button:hover, .action-text-button:hover {
   box-shadow: 0px 0px 10px #f95e04;
   transition: 1s;
   cursor: pointer;
@@ -231,7 +234,7 @@ input {
 
 .location-content-container {
   position: relative;
-  font-size: 1em;
+  font-size: .9em;
   grid-area: location-content-container;
   border: 2px solid #598381;
   padding: 15px;
