@@ -29,11 +29,22 @@ const socket = io(url)
 function App() {
   const { user } = useAuth0()
   const [player, setPlayer] = useState({} as Player)
+  const [inventory, setInventory] = useState([] as string[])
+  const [quests, setQuests] = useState({} as Record<string, number>)
+  const [events, setEvents] = useState({} as Record<string, boolean>)
+  const [gold, setGold] = useState(0)
   const nav = useNavigate()
 
+  const fullPlayer = {
+    ...player,
+    gold,
+    inventory,
+    progress: { events, quests },
+  }
+
   const loggingOut = useCallback(() => {
-    socket.emit('logging out', player)
-  }, [player])
+    socket.emit('logging out')
+  }, [])
 
   useEffect(() => {
     console.log(user)
@@ -46,6 +57,10 @@ function App() {
 
   socket.on('send player data', (player: Player) => {
     setPlayer(player)
+    setInventory(player.inventory)
+    setQuests(player.progress.quests)
+    setEvents(player.progress.events)
+    setGold(player.gold)
     console.log('got player data, sending to location...')
     nav(`/loc/${player.location}`)
   })
@@ -55,43 +70,31 @@ function App() {
 
   // Custom functions to be passed into the components, to replace setPlayer
 
-  const addGold = (gold: number) => {
-    player.gold += gold
-    setPlayer(player)
-    socket.emit('update gold', player.gold)
+  const addGold = (goldDelta: number) => {
+    const newGold = gold + goldDelta
+    setGold(newGold)
+    socket.emit('update gold', newGold)
   }
 
-  const updateQuests = (quests: Record<string, number>) => {
-    const progress = {
-      ...player.progress,
-      quests: { ...player.progress.quests, ...quests },
-    }
-    setPlayer({
-      ...player,
-      progress,
-    })
-    socket.emit('update progress', progress)
+  const updateQuests = (newQuests: Record<string, number>) => {
+    newQuests = { ...quests, ...newQuests }
+    setQuests(newQuests)
+    socket.emit('update progress', { events, quests: newQuests })
   }
-  const updateEvents = (events: Record<string, boolean>) => {
-    const progress = {
-      ...player.progress,
-      events: { ...player.progress.events, ...events },
-    }
-    setPlayer({
-      ...player,
-      progress,
-    })
-    socket.emit('update progress', progress)
+  const updateEvents = (newEvents: Record<string, boolean>) => {
+    newEvents = { ...events, ...newEvents }
+    setEvents(newEvents)
+    socket.emit('update progress', { events: newEvents, quests })
   }
   const addItems = (items: string[]) => {
-    const inventory = [...player.inventory, ...items]
-    setPlayer({ ...player, inventory })
-    socket.emit('update inventory', inventory)
+    const newInventory = [...inventory, ...items]
+    setInventory(newInventory)
+    socket.emit('update inventory', newInventory)
   }
   const removeItems = (items: string[]) => {
-    const inventory = player.inventory.filter((i) => !items.includes(i))
-    setPlayer({ ...player, inventory })
-    socket.emit('update inventory', inventory)
+    const newInventory = inventory.filter((i) => !items.includes(i))
+    setInventory(newInventory)
+    socket.emit('update inventory', newInventory)
   }
   return (
     <>
@@ -117,20 +120,26 @@ function App() {
           <Route
             path="/loc/"
             element={
-              <Frame socket={socket} player={player} setPlayer={setPlayer} />
+              <Frame
+                socket={socket}
+                player={player}
+                setPlayer={setPlayer}
+                inventory={inventory}
+                gold={gold}
+              />
             }
           >
             <Route
               path="town-square"
               element={
-                <TownSquare player={player} updateEvents={updateEvents} />
+                <TownSquare player={fullPlayer} updateEvents={updateEvents} />
               }
             />
             <Route
               path="tavern"
               element={
                 <Tavern
-                  player={player}
+                  player={fullPlayer}
                   removeItems={removeItems}
                   addGold={addGold}
                   updateEvents={updateEvents}
@@ -141,7 +150,7 @@ function App() {
               path="salon"
               element={
                 <Salon
-                  player={player}
+                  player={fullPlayer}
                   updateEvents={updateEvents}
                   socket={socket}
                 />
@@ -149,17 +158,17 @@ function App() {
             />
             <Route
               path="church"
-              element={<Church player={player} setPlayer={setPlayer} />}
+              element={<Church player={fullPlayer} setPlayer={setPlayer} />}
             />
             <Route
               path="item-shop"
-              element={<ItemShop player={player} setPlayer={setPlayer} />}
+              element={<ItemShop player={fullPlayer} setPlayer={setPlayer} />}
             />
             <Route
               path="docks"
               element={
                 <Docks
-                  player={player}
+                  player={fullPlayer}
                   setPlayer={setPlayer}
                   addItems={addItems}
                 />
@@ -167,17 +176,21 @@ function App() {
             />
             <Route
               path="town-entrance"
-              element={<TownEntrance player={player} setPlayer={setPlayer} />}
+              element={
+                <TownEntrance player={fullPlayer} setPlayer={setPlayer} />
+              }
             />
             <Route
               path="adventurer-camp"
-              element={<AdventurerCamp player={player} setPlayer={setPlayer} />}
+              element={
+                <AdventurerCamp player={fullPlayer} setPlayer={setPlayer} />
+              }
             />
             <Route
               path="quarry"
               element={
                 <Quarry
-                  player={player}
+                  player={fullPlayer}
                   setPlayer={setPlayer}
                   addGold={addGold}
                 />
@@ -187,7 +200,7 @@ function App() {
               path="woods"
               element={
                 <Woods
-                  player={player}
+                  player={fullPlayer}
                   addItems={addItems}
                   updateEvents={updateEvents}
                 />
@@ -195,11 +208,11 @@ function App() {
             />
             <Route
               path="castle"
-              element={<Castle player={player} setPlayer={setPlayer} />}
+              element={<Castle player={fullPlayer} setPlayer={setPlayer} />}
             />
             <Route
               path="cave"
-              element={<Cave player={player} setPlayer={setPlayer} />}
+              element={<Cave player={fullPlayer} setPlayer={setPlayer} />}
             />
           </Route>
         </Routes>

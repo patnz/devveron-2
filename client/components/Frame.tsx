@@ -10,9 +10,17 @@ interface Props {
   socket: Socket
   player: Player
   setPlayer: (p: Player) => void
+  inventory: string[]
+  gold: number
 }
 
-export default function Frame({ socket, player, setPlayer }: Props) {
+export default function Frame({
+  socket,
+  player,
+  setPlayer,
+  inventory,
+  gold,
+}: Props) {
   const location = useLocation()
 
   const onMove = useCallback(() => {
@@ -33,7 +41,7 @@ export default function Frame({ socket, player, setPlayer }: Props) {
         {/* <Header /> */}
         {player.char_name ? <Outlet /> : <p>Loading...</p>}
         <PlayersHere socket={socket} />
-        <Inventory player={player} />
+        <Inventory inventory={inventory} gold={gold} />
         <Chat socket={socket} />
       </section>
     </>
