@@ -10,7 +10,7 @@ function Church({ player, setPlayer }: Props) {
   return (
     <>
       <div className="location-name">
-        <h2></h2>
+        <h2>The Whare Tapa Wha</h2>
       </div>
       <div className="location-content-container">
         <p>
@@ -21,16 +21,16 @@ function Church({ player, setPlayer }: Props) {
           walls holding up the roof of the whare. They are strong and have deep
           foundations that are secure and safe. Upon the altar one sees Brother
           Joseph giving a lecture. He spots you and talks to you directly.
-          Brother Joseph: "Hello traveller and welcome to the Church of Te Whare
-          Tapa Wha! Here we teach you the skills needed to be able to navigate
-          and survive the at times stressful world of Devveron. We ASK of you
-          that when you speak here, that you be actionable, specific and kind
-          with those around you. I would love to give you a quest, should you
-          wish to take it up? Can you please take this healing body of water to
-          my friend Patch? To achieve this objective, one will need to have
+          Brother Joseph: &ldquot;Hello traveller and welcome to the Church of
+          Te Whare Tapa Wha! Here we teach you the skills needed to be able to
+          navigate and survive the at times stressful world of Devveron. We ASK
+          of you that when you speak here, that you be actionable, specific and
+          kind with those around you. I would love to give you a quest, should
+          you wish to take it up? Can you please take this healing body of water
+          to my friend Patch? To achieve this objective, one will need to have
           strong Integrity, Kindness and Effort. Should you take on this quest,
           the experience received will stand you in good stead for any future
-          journey you may have going forward in the world of Devveron."
+          journey you may have going forward in the world of Devveron.&rdquot;
           <Link to="/loc/docks" className="link">
             Docks
           </Link>
