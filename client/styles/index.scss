@@ -115,10 +115,17 @@ input {
   height: 60px;
   width: 60px;
   border-radius: 100%;
-  background-color: inherit;
+  background-color: #302428;
   color: #f8a50b;
   box-shadow: 0px 0px 5px #598381;
-  align-self: center;
+  transition: box-shadow 3s;
+  z-index: 3;
+}
+
+.next-content-button:hover {
+  box-shadow: 0px 0px 10px #f95e04;
+  transition: 1s;
+  cursor: pointer;
 }
 
 @keyframes show-button {
@@ -187,7 +194,7 @@ input {
 
 .location-content-container {
   position: relative;
-  font-size: 1.2em;
+  font-size: 1em;
   grid-area: location-content-container;
   border: 2px solid #598381;
   padding: 15px;
