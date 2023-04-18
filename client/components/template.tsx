@@ -4,15 +4,13 @@ import { useState } from 'react'
 
 interface Props {
   player: Player
-  updateEvents: (events: Record<string, boolean>) => void
+  // updateEvents: (events: Record<string, boolean>) => void
+  setPlayer: (player: Player) => void
 }
 
-function template({ player, updateEvents }: Props) {
+function Template({ player, setPlayer }: Props) {
   const [contentStage, setContentStage] = useState(0)
-    // player.progress.events.metPat ? 3 : 0
-  
-
-
+  // player.progress.events.metPat ? 3 : 0
 
   const handleClickNext = () => {
     if (contentStage < 3) {
@@ -35,9 +33,7 @@ function template({ player, updateEvents }: Props) {
       <div className="location-content-container">
         {contentStage === 0 && (
           <div className="location-content typerwriter">
-            <p className="townsquare-content-1 typewriter">
-              main content...
-            </p>
+            <p className="townsquare-content-1 typewriter">main content...</p>
 
             <button className="next-content-button" onClick={handleClickNext}>
               ⮕
@@ -106,4 +102,4 @@ function template({ player, updateEvents }: Props) {
   )
 }
 
-export template
+export default Template
