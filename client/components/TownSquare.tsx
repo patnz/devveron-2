@@ -1,13 +1,14 @@
 import { Player } from '../../models/player'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 interface Props {
   player: Player
+  addItems: (items: string[]) => void
   updateEvents: (events: Record<string, boolean>) => void
 }
 
-function TownSquare({ player, updateEvents }: Props) {
+function TownSquare({ player, updateEvents, addItems }: Props) {
   const [contentStage, setContentStage] = useState(
     player.progress.events.metPat ? 3 : 0
   )
@@ -25,6 +26,12 @@ function TownSquare({ player, updateEvents }: Props) {
       setContentStage(contentStage - 1)
     }
   }
+
+  const getFalcon = useCallback(() => {
+    addItems(['Millennium Falcon'])
+    updateEvents({ foundFalcon: true, gaveFalcon: false })
+  }, [addItems, updateEvents])
+
   return (
     <>
       <div className="location-name">
@@ -85,6 +92,13 @@ function TownSquare({ player, updateEvents }: Props) {
                 reward!”
               </p>
             </p>
+            {player.progress.events.foundFalcon ? (
+              <p>You have been offered a Lego Set of the Millenium Falcon</p>
+            ) : (
+              <button onClick={getFalcon}>
+                Take up the offer of the Millenium Falcon?
+              </button>
+            )}
             <button className="back-content-button" onClick={handleClickBack}>
               ⬅
             </button>
