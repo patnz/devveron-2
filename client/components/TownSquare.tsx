@@ -125,19 +125,19 @@ function TownSquare({ player, updateEvents, addItems }: Props) {
               <Link to="/loc/church" className="link">
                 Church
               </Link>{' '}
-              bells starts to ring through the square. The{' '}
+              bells starts to ring through the square. Perhaps you will be able
+              to find something of interest at the{' '}
               <Link to="/loc/item-shop" className="link">
                 Item Shop
-              </Link>{' '}
-              might be a good place to find anything you might need. There is a{' '}
+              </Link>
+              . There is a road off to the side which leads down to the{' '}
               <Link to="/loc/docks" className="link">
-                Road
+                Docks
               </Link>{' '}
-              off to the side which leads down to the Docks area, and behind you
-              is the road leading back to the{' '}
+              area, and behind you is the road leading back to the{' '}
               <Link to="/loc/town-entrance" className="link">
                 Town Entrance
-              </Link>{' '}
+              </Link>
               .
             </p>
             <button
