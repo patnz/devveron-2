@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Socket } from 'socket.io-client'
 import { ActivePlayer } from '../../models/player'
 import { useLocation } from 'react-router-dom'
@@ -12,19 +12,22 @@ export default function PlayersHere({ socket }: Props) {
   const [isGlobal, setIsGlobal] = useState(true)
   const loc = useLocation().pathname.split('/')[2]
 
+  useEffect(() => {
+    socket.emit('get online players')
+  }, [socket])
+
   socket.on('player logged in', (player) => {
+    console.log('saw player log in')
     setUsers([...users, player])
   })
 
   socket.on('player logged out', (player) => {
+    console.log('saw player log out')
     setUsers(users.filter((user) => user.id !== player.id))
   })
 
   socket.on('player used mirror', (player) => {
-    console.log(
-      player.id,
-      users.map((user) => user.id)
-    )
+    console.log('someone used mirror')
     setUsers(users.map((user) => (user.id === player.id ? player : user)))
   })
 
@@ -36,6 +39,7 @@ export default function PlayersHere({ socket }: Props) {
   })
 
   socket.on('online players', (users) => {
+    console.log('getting users already online')
     setUsers(users)
   })
 
