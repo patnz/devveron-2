@@ -31,11 +31,11 @@ export default function Patch({ player, updateEvents, socket }: Props) {
       ) : convoStage === 1 ? (
         <>
           {events.metPatch ? (
-            <p className="npc-chat">
+            <p className="npc-quote">
               Hello again {player.char_name}! What can I help you with today?
             </p>
           ) : (
-            <p className="npc-chat">
+            <p className="npc-quote">
               Hi there! I&apos;m Patch and this is my Salon. It&apos;s a
               pleasure to meet you!
             </p>
@@ -46,8 +46,8 @@ export default function Patch({ player, updateEvents, socket }: Props) {
         </>
       ) : (
         <>
-          <p className="player-chat">How does this Salon work?</p>
-          <p className="npc-chat">
+          <p className="player-quote">How does this Salon work?</p>
+          <p className="npc-quote">
             Just stare into this Magic Mirror I made and focus on what you want
             to look like. Neat, huh!
           </p>
