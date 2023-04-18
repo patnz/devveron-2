@@ -128,7 +128,14 @@ function App() {
             />
             <Route
               path="tavern"
-              element={<Tavern player={player} setPlayer={setPlayer} />}
+              element={
+                <Tavern
+                  player={player}
+                  removeItems={removeItems}
+                  addGold={addGold}
+                  updateEvents={updateEvents}
+                />
+              }
             />
             <Route
               path="salon"
