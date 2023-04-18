@@ -88,7 +88,7 @@ function TownSquare({ player, setPlayer, addItems, updateEvents }: Props) {
               <p>You have been offered a Lego Set of the Millenium Falcon</p>
             ) : (
               <button onClick={getFalcon}>
-                Grab the Nine Iron Club on the ground?
+                Take up the offer of the Millenium Falcon?
               </button>
             )}
             <button className="back-content-button" onClick={handleClickBack}>
