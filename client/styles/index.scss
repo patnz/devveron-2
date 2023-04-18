@@ -70,7 +70,7 @@ input {
 
 
 /////////////////////////////////////////////////////////////
-//////////////////////// LOGIN BUTTON ///////////////////////////
+//////////////////////// BUTTONS ///////////////////////////
 //////////////////////////////////////////////////////////////
 
 .log-button {
@@ -99,22 +99,59 @@ input {
   align-self: center;
 }
 
-/////////////////////////////////////////////////////////////////////
-////////////////////// BUTTONS //////////////////////////
-/////////////////////////////////////////////////////////////////////
 
-.next-content-button {
+.next-content-button, .back-content-button {
   opacity: 0;
   animation-name: show-button;
   animation-duration: 2s;
-  animation-delay: 6s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+  ///////////
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  background-color: #302428;
+  color: #f8a50b;
+  box-shadow: 0px 0px 5px #598381;
+  transition: box-shadow 3s;
+  z-index: 3;
+  position: absolute;
+  bottom: 10px;
+}
+
+.next-content-button{
+  right: 20px;
+}
+.back-content-button{
+
+  left: 20px;
+}
+
+.npc-quote {
+  color: #598381;
+  font-weight: bold;
+}
+
+
+.player-quote {
+  color:#f8a50b;
+  font-weight: bold;
+}
+
+.action-text-button {
+  font-family: 'Inconsolata', monospace;
+  opacity: 0;
+  animation-name: show-button;
+  animation-duration: 2s;
+  animation-delay: 3s;
   animation-fill-mode: forwards;
   position: absolute;
   bottom: 10px;
+  right: 10px;
   ///////////
-  height: 60px;
-  width: 60px;
-  border-radius: 100%;
+  height: 50px;
+  width: 150px;
+  border-radius: 10%;
   background-color: #302428;
   color: #f8a50b;
   box-shadow: 0px 0px 5px #598381;
@@ -122,7 +159,7 @@ input {
   z-index: 3;
 }
 
-.next-content-button:hover {
+.next-content-button:hover, .back-content-button:hover {
   box-shadow: 0px 0px 10px #f95e04;
   transition: 1s;
   cursor: pointer;
@@ -211,7 +248,7 @@ input {
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .15em; /* Adjust as needed */
   animation: 
-    typing 5s steps(40, end),
+    typing 3s steps(40, end),
     // blink-caret .75s step-end;
 }
 
