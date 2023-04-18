@@ -6,20 +6,16 @@ interface Props {
   setPlayer: (player: Player) => void
 }
 
-function TownEntrance({ player, setPlayer }: Props) {
+function ShipDeck({ player, setPlayer }: Props) {
   return (
     <>
       <div className="location-name">
-        <h2>The Wild Wanderer Tavern</h2>
+        <h2>The Thousand Sunny</h2>
       </div>
       <div className="location-content-container">
         <p>
-          Lorum Ipso
-          <Link to="/loc/town-entrance" className="link">
-            Town Entrance
-          </Link>
-          <Link to="/loc/woods" className="link">
-            Woods
+          <Link to="/loc/docks" className="link">
+            Docks
           </Link>
           .
         </p>
@@ -28,4 +24,4 @@ function TownEntrance({ player, setPlayer }: Props) {
   )
 }
 
-export default TownEntrance
+export default ShipDeck

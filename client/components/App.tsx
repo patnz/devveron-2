@@ -73,13 +73,13 @@ function App() {
     })
     socket.emit('update progress', progress)
   }
-  const addItem = (item: string) => {
-    const inventory = [...player.inventory, item]
+  const addItem = (items: string[]) => {
+    const inventory = [...player.inventory, ...items]
     setPlayer({ ...player, inventory })
     socket.emit('update inventory', inventory)
   }
-  const removeItem = (item: string) => {
-    const inventory = player.inventory.filter((i) => i !== item)
+  const removeItem = (items: string[]) => {
+    const inventory = player.inventory.filter((i) => !items.includes(i))
     setPlayer({ ...player, inventory })
     socket.emit('update inventory', inventory)
   }
