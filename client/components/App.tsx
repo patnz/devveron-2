@@ -220,7 +220,14 @@ function App() {
             />
             <Route
               path="castle"
-              element={<Castle player={fullPlayer} setPlayer={setPlayer} />}
+              element={
+                <Castle
+                  player={fullPlayer}
+                  addGold={addGold}
+                  updateEvents={updateEvents}
+                  removeItems={removeItems}
+                />
+              }
             />
             <Route
               path="cave"
