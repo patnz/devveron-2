@@ -224,7 +224,7 @@ function App() {
                 <Castle
                   player={fullPlayer}
                   addGold={addGold}
-                  updateQuests={updateQuests}
+                  updateEvents={updateEvents}
                   removeItems={removeItems}
                 />
               }
