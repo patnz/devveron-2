@@ -162,7 +162,14 @@ function App() {
             />
             <Route
               path="item-shop"
-              element={<ItemShop player={fullPlayer} setPlayer={setPlayer} />}
+              element={
+                <ItemShop
+                  player={fullPlayer}
+                  addGold={addGold}
+                  addItems={addItems}
+                  updateEvents={updateEvents}
+                />
+              }
             />
             <Route
               path="docks"
