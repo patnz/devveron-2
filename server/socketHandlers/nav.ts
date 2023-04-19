@@ -15,7 +15,6 @@ export function navHandlers(io: any, socket: any) {
 
   socket.on('using mirror', () => {
     roomStates.salon.charsUsingMirror.push(socket.data.char_name)
-    console.log(roomStates.salon.charsUsingMirror)
     io.to('salon').emit('room state', roomStates.salon)
   })
 }

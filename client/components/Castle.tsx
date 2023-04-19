@@ -3,10 +3,17 @@ import { Link } from 'react-router-dom'
 
 interface Props {
   player: Player
-  setPlayer: (player: Player) => void
+  addGold: (goldDelta: number) => void
+  updateEvents: (newEvents: Record<string, boolean>) => void
+  removeItems: (items: string[]) => void
 }
 
-function Castle({ player, setPlayer }: Props) {
+function Castle({ player, addGold, updateEvents, removeItems }: Props) {
+  const giveZelda = () => {
+    addGold(100)
+    removeItems(['Zelda Sword'])
+    updateEvents({ formedAlliance: true })
+  }
   return (
     <>
       <div className="location-name">
@@ -24,15 +31,37 @@ function Castle({ player, setPlayer }: Props) {
           .
         </p>
         <p>
-          There is a fugure at the front gates - A Vampire! He gestures to you
+          There is a figure at the front gates - A Vampire! He gestures to you
           not to worry and beckons you over for a chat.
         </p>
-        <p>
-          &ldquo;Hello there! My name is Gerard the Good. Has Mayor Kelly sent
-          you to form a alliance with the town? I am happy to oblige, but I need
-          to make sure there is more than one person interested in proposing
-          this alliance.&rdquo;
-        </p>
+
+        {player.progress.events.formedAlliance ? (
+          <p>
+            &ldquo;Congratulations! I see you have brought the Zelda Sword with
+            you. Let&apos;s feast to celebrate!&rdquo;
+          </p>
+        ) : player.inventory.includes('Zelda Sword') ? (
+          <>
+            <p className="npc-quote">You found the Zelda Sword!</p>
+            <button className="action-text-button" onClick={giveZelda}>
+              Give Gerard the Sword
+            </button>
+          </>
+        ) : (
+          <>
+            <p>
+              &ldquo;Hello there! My name is Gerard the Good. Has Mayor Kelly
+              sent you to form a alliance with the town? I am happy to oblige,
+              but I need to make sure you have brought the required item from
+              the town.&rdquo;
+            </p>
+            <p>
+              {' '}
+              &ldquo;Please buy the Zelda Sword from the Redux Store in town and
+              bring it to me to seal the deal.&rdquo;
+            </p>
+          </>
+        )}
       </div>
     </>
   )

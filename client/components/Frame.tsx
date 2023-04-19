@@ -25,9 +25,8 @@ export default function Frame({
 
   const onMove = useCallback(() => {
     const loc = location.pathname.split('/')[2]
-    console.log(loc, player.location)
     if (loc !== player.location) {
-      console.log('moving')
+      // console.log('moving')
       socket.emit('moving', player.location, loc)
       setPlayer({ ...player, location: loc })
     }

@@ -9,13 +9,13 @@ export function Nav({ loggingOut }: Props) {
   const { user, logout, loginWithRedirect } = useAuth0()
 
   const handleSignOut = () => {
-    console.log('sign out', user?.nickname)
+    // console.log('sign out', user?.nickname)
     loggingOut()
     logout()
   }
 
   const handleSignIn = () => {
-    console.log('sign in', user)
+    // console.log('sign in', user)
     loginWithRedirect()
   }
 

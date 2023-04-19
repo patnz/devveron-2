@@ -131,6 +131,16 @@ function Docks({
             </button>
           </div>
         )}
+        {player.progress.events.formedAlliance ? (
+          <p className="npc-quote">
+            Thank you for talking to Gerard at the Castle!
+          </p>
+        ) : (
+          <p className="npc-quote">
+            Also, if you have time, can you bring a Zelda Sword to Gerard at the
+            Castle?
+          </p>
+        )}
       </div>
     </>
   )
