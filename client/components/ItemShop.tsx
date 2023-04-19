@@ -4,31 +4,30 @@ import { useCallback } from 'react'
 
 interface Props {
   player: Player
-  setPlayer: (player: Player) => void
   addGold: (gold: number) => void
   addItems: (item: string[]) => void
   updateEvents: (events: Record<string, boolean>) => void
 }
 
-function ItemShop({
-  player,
-  setPlayer,
-  addGold,
-  addItems,
-  updateEvents,
-}: Props) {
+function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
   //list of items for sale in the Item Store
+  const getTibetanSingingBowl = useCallback(() => {
+    addItems(['Tibetan Singing Bowl'])
+
+    addGold(-120)
+  }, [addItems, addGold])
+
   const getZeldaSword = useCallback(() => {
     addItems(['Zelda Sword'])
-    updateEvents({ foundZsword: true })
-    addGold(-120)
-  }, [addItems, updateEvents, addGold])
+
+    addGold(-69)
+  }, [addItems, addGold])
 
   const getCurlyBrace = useCallback(() => {
     addItems(['Curly Brace'])
     updateEvents({ foundBrace: true })
     addGold(-50)
-  }, [addItems, updateEvents, addGold])
+  }, [])
 
   const getHealingWater = useCallback(() => {
     addItems(['Healing Water'])
@@ -59,13 +58,12 @@ function ItemShop({
           </Link>
           .
         </p>
-        <button onClick={getZeldaSword}>
-          Buy the Mythical Zelda Sword for 120 gold
+        <button onClick={getTibetanSingingBowl}>
+          Buy that annoying Tibetan Singing Bowl the Facilitators use in the
+          morning for 120 gold
         </button>
 
         <button onClick={getCurlyBrace}>Buy Curly Brace for 50 gold</button>
-
-        <button onClick={getHealingWater}>Buy Healing Water for 5 gold</button>
 
         <button onClick={getHealingWater}>Buy Healing Water for 5 gold</button>
 
@@ -74,6 +72,8 @@ function ItemShop({
         <button onClick={donateMoneyToChurchOfWhare}>
           Donate 5 gold to the Church{' '}
         </button>
+
+        <button onClick={getZeldaSword}>Get the Zelda Sword for 69 gold</button>
       </div>
     </>
   )
