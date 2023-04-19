@@ -20,7 +20,7 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
   const getZeldaSword = useCallback(() => {
     addItems(['Zelda Sword'])
 
-    addGold(-69)
+    addGold(-50)
   }, [addItems, addGold])
 
   const getCurlyBrace = useCallback(() => {
@@ -53,27 +53,52 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
           Welcome to the Redux Store! We GET and SEND things from our warehouse
           and wait for things to get to us through our teams of ACTIONS and
           REDUCERS so that you do not have to wait! Come query our list items!
+          Click to go to: <br></br>
           <Link to="/loc/town-square" className="link">
             Town Square
           </Link>
           .
         </p>
-        <button onClick={getTibetanSingingBowl}>
-          Buy that annoying Tibetan Singing Bowl the Facilitators use in the
-          morning for 120 gold
-        </button>
+        {player.inventory.includes('Tibetan Singing Bowl') ? (
+          <p>You have an annoying Tibetan Singing Bowl</p>
+        ) : (
+          <button onClick={getTibetanSingingBowl}>
+            Buy that annoying Tibetan Singing Bowl the Facilitators use in the
+            morning for 120 gold
+          </button>
+        )}
 
-        <button onClick={getCurlyBrace}>Buy Curly Brace for 50 gold</button>
+        {player.inventory.includes('Curly Brace') ? (
+          <p>You have a Curly Brace in your inventory</p>
+        ) : (
+          <button onClick={getCurlyBrace}>Buy Curly Brace for 50 gold</button>
+        )}
 
-        <button onClick={getHealingWater}>Buy Healing Water for 5 gold</button>
+        {player.inventory.includes('Healing Water') ? (
+          <p>You have Healing Water in your inventory</p>
+        ) : (
+          <button onClick={getHealingWater}>
+            Buy Healing Water for 5 gold
+          </button>
+        )}
 
-        <button onClick={getExplosives}>Buy Explosives for 30 gold</button>
+        {player.inventory.includes('Explosives') ? (
+          <p>You Explosives in your Inventory</p>
+        ) : (
+          <button onClick={getExplosives}>Buy Explosives for 30 gold</button>
+        )}
 
         <button onClick={donateMoneyToChurchOfWhare}>
           Donate 5 gold to the Church{' '}
         </button>
 
-        <button onClick={getZeldaSword}>Get the Zelda Sword for 69 gold</button>
+        {player.inventory.includes('Zelda Sword') ? (
+          <p>You already have the Zelda Sword</p>
+        ) : (
+          <button onClick={getZeldaSword}>
+            Get the Zelda Sword for fitty gold
+          </button>
+        )}
       </div>
     </>
   )
