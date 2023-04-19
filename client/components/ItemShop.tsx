@@ -58,22 +58,46 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
           </Link>
           .
         </p>
-        <button onClick={getTibetanSingingBowl}>
-          Buy that annoying Tibetan Singing Bowl the Facilitators use in the
-          morning for 120 gold
-        </button>
+        {player.inventory.includes('Tibetan Singing Bowl') ? (
+          <p>You already have a Tibetan Singing Bowl</p>
+        ) : (
+          <button onClick={getTibetanSingingBowl}>
+            Buy that annoying Tibetan Singing Bowl the Facilitators use in the
+            morning for 120 gold
+          </button>
+        )}
 
-        <button onClick={getCurlyBrace}>Buy Curly Brace for 50 gold</button>
+        {player.inventory.includes('Curly Brace') ? (
+          <p>You already have a Curly Brace fool</p>
+        ) : (
+          <button onClick={getCurlyBrace}>Buy Curly Brace for 50 gold</button>
+        )}
 
-        <button onClick={getHealingWater}>Buy Healing Water for 5 gold</button>
+        {player.inventory.includes('Healing Water') ? (
+          <p>You already have Healing Water</p>
+        ) : (
+          <button onClick={getHealingWater}>
+            Buy Healing Water for 5 gold
+          </button>
+        )}
 
-        <button onClick={getExplosives}>Buy Explosives for 30 gold</button>
+        {player.inventory.includes('Explosives') ? (
+          <p>You already have Explosives</p>
+        ) : (
+          <button onClick={getExplosives}>Buy Explosives for 30 gold</button>
+        )}
 
         <button onClick={donateMoneyToChurchOfWhare}>
           Donate 5 gold to the Church{' '}
         </button>
 
-        <button onClick={getZeldaSword}>Get the Zelda Sword for 69 gold</button>
+        {player.inventory.includes('Zelda Sword') ? (
+          <p>You already have the Zelda Sword</p>
+        ) : (
+          <button onClick={getZeldaSword}>
+            Get the Zelda Sword for 69 gold
+          </button>
+        )}
       </div>
     </>
   )
