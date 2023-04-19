@@ -17,29 +17,29 @@ export default function PlayersHere({ socket }: Props) {
   }, [socket])
 
   socket.on('player logged in', (player) => {
-    console.log('saw player log in')
+    // console.log('saw player log in')
     setUsers([...users, player])
   })
 
   socket.on('player logged out', (player) => {
-    console.log('saw player log out')
+    // console.log('saw player log out')
     setUsers(users.filter((user) => user.id !== player.id))
   })
 
   socket.on('player used mirror', (player) => {
-    console.log('someone used mirror')
+    // console.log('someone used mirror')
     setUsers(users.map((user) => (user.id === player.id ? player : user)))
   })
 
   socket.on('player moved', (id: string, location: string) => {
-    console.log('saw player move')
+    // console.log('saw player move')
     setUsers(
       users.map((user) => (user.id === id ? { ...user, location } : user))
     )
   })
 
   socket.on('online players', (users) => {
-    console.log('getting users already online')
+    // console.log('getting users already online')
     setUsers(users)
   })
 

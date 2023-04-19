@@ -20,7 +20,7 @@ export function updateHandlers(io: any, socket: any) {
       roomStates.salon.charsUsingMirror.filter(
         (name) => name !== socket.data.char_name
       )
-    console.log(roomStates.salon.charsUsingMirror)
+
     io.to('salon').emit('room state', roomStates.salon)
     socket.data = player
     socket.broadcast.emit('player used mirror', {

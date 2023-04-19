@@ -29,7 +29,6 @@ export function getPlayer(
           return undefined
         case 1: {
           const [player] = result
-          console.log(player)
           return {
             ...player,
             inventory: JSON.parse(player.inventory),
