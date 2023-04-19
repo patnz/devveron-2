@@ -37,10 +37,13 @@ function Tavern({ player, removeItems, addGold, updateEvents }: Props) {
           </Link>
         </p>
         <p>
-          Further down along you see a straggly Pirate who looks like he has
-          been out on sea for a long time. He has a luscious flowing beard and a
-          mane that belies a man of great adventure and joy. Peg legged, he has
-          a putting golf club for a foot.
+          In the bar, Lady Shrena and world famous Potter Emily S are having a
+          nice Sav in long flute glasses. It appears they are talking about high
+          culture and the colour patterns of couches. Further down along you see
+          a straggly Pirate who looks like he has been out on sea for a long
+          time. He has a luscious flowing beard and a mane that belies a man of
+          great adventure and joy. Peg legged, he has a putting golf club for a
+          foot.
         </p>
         <p className="player-quote">Pirate Josh:</p>
         {player.progress.events.gaveJoshClub ? (
