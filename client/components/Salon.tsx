@@ -27,9 +27,7 @@ function Salon({ player, updateEvents, socket }: Props) {
       <div className="location-content-container">
         <div className="location-content">
           <p>
-            Welcome to the Salon! My name is Lady Shrena and this our cozy store
-            I corun with my Ceramcist friend Emily. We both have bangin' taste
-            in interior design and interior architecture. Next to us is a{' '}
+            The Salon is a cozy store with a{' '}
             <Link to="/update" className="link">
               Magic Mirror
             </Link>{' '}
