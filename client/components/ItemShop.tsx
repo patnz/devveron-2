@@ -17,6 +17,12 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
     addGold(-120)
   }, [addItems, addGold])
 
+  const getZeldaSword = useCallback(() => {
+    addItems(['Zelda Sword'])
+
+    addGold(-69)
+  }, [addItems, addGold])
+
   const getCurlyBrace = useCallback(() => {
     addItems(['Curly Brace'])
     updateEvents({ foundBrace: true })
@@ -66,6 +72,8 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
         <button onClick={donateMoneyToChurchOfWhare}>
           Donate 5 gold to the Church{' '}
         </button>
+
+        <button onClick={getZeldaSword}>Get the Zelda Sword for 69 gold</button>
       </div>
     </>
   )
