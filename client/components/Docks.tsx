@@ -101,6 +101,18 @@ function Docks({
                 an item I had stashed at Pat's, the mythical Lego set of the
                 Millenium Falcon?..”
               </p>
+              {player.progress.events.formedAlliance && (
+                <p className="npc-quote">
+                  <span className="quote-icon">➶ </span>"Also... Thank you for
+                  talking to Gerard at the Castle!"
+                </p>
+              )}
+              {!player.progress.events.formedAlliance && (
+                <p className="npc-quote">
+                  <span className="quote-icon">➶ </span>"Also, if you have time,
+                  can you bring a Zelda Sword to Gerard at the Castle?"
+                </p>
+              )}
               <button className="back-content-button" onClick={handleClickBack}>
                 ⬅
               </button>
@@ -115,7 +127,7 @@ function Docks({
               Kelly stares longingly at the Millenium Falcon Lego Set perking
               out the top of your rucksack...
             </p>
-            <button className="action-text-bustton" onClick={giveFalcon}>
+            <button className="action-text-button" onClick={giveFalcon}>
               Hand over Lego
             </button>
             <button className="back-content-button" onClick={handleClickBack}>
@@ -124,22 +136,15 @@ function Docks({
           </div>
         ) : (
           <div className="location-content">
-            <p>Kelly seems dissapointed in you and walks off in a huff.</p>
+            <p>
+              You don't have anything to offer Kelly. They seem dissapointed in
+              you and walk off in to the distance...
+            </p>
 
             <button className="back-content-button" onClick={handleClickBack}>
               ⬅
             </button>
           </div>
-        )}
-        {player.progress.events.formedAlliance ? (
-          <p className="npc-quote">
-            Thank you for talking to Gerard at the Castle!
-          </p>
-        ) : (
-          <p className="npc-quote">
-            Also, if you have time, can you bring a Zelda Sword to Gerard at the
-            Castle?
-          </p>
         )}
       </div>
     </>

@@ -62,7 +62,7 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
         {player.inventory.includes('Tibetan Singing Bowl') ? (
           <p>You have an annoying Tibetan Singing Bowl</p>
         ) : (
-          <button onClick={getTibetanSingingBowl}>
+          <button className="shop-text-button" onClick={getTibetanSingingBowl}>
             Buy that annoying Tibetan Singing Bowl the Facilitators use in the
             morning for 120 gold
           </button>
@@ -71,13 +71,15 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
         {player.inventory.includes('Curly Brace') ? (
           <p>You have a Curly Brace in your inventory</p>
         ) : (
-          <button onClick={getCurlyBrace}>Buy Curly Brace for 50 gold</button>
+          <button className="shop-text-button" onClick={getCurlyBrace}>
+            Buy Curly Brace for 50 gold
+          </button>
         )}
 
         {player.inventory.includes('Healing Water') ? (
           <p>You have Healing Water in your inventory</p>
         ) : (
-          <button onClick={getHealingWater}>
+          <button className="shop-text-button" onClick={getHealingWater}>
             Buy Healing Water for 5 gold
           </button>
         )}
@@ -85,17 +87,22 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
         {player.inventory.includes('Explosives') ? (
           <p>You Explosives in your Inventory</p>
         ) : (
-          <button onClick={getExplosives}>Buy Explosives for 30 gold</button>
+          <button className="shop-text-button" onClick={getExplosives}>
+            Buy Explosives for 30 gold
+          </button>
         )}
 
-        <button onClick={donateMoneyToChurchOfWhare}>
+        <button
+          className="shop-text-button"
+          onClick={donateMoneyToChurchOfWhare}
+        >
           Donate 5 gold to the Church{' '}
         </button>
 
         {player.inventory.includes('Zelda Sword') ? (
           <p>You already have the Zelda Sword</p>
         ) : (
-          <button onClick={getZeldaSword}>
+          <button className="shop-text-button" onClick={getZeldaSword}>
             Get the Zelda Sword for fitty gold
           </button>
         )}
