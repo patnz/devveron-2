@@ -144,7 +144,7 @@ function TownSquare({ player, updateEvents, addItems }: Props) {
               className="action-text-button"
               onClick={() => setContentStage(1)}
             >
-              Talk to Pat again
+              Talk to Shrena again
             </button>
             <button className="back-content-button" onClick={handleClickBack}>
               ⬅
