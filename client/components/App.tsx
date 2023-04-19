@@ -132,7 +132,11 @@ function App() {
             <Route
               path="town-square"
               element={
-                <TownSquare player={fullPlayer} updateEvents={updateEvents} />
+                <TownSquare
+                  player={fullPlayer}
+                  updateEvents={updateEvents}
+                  addItems={addItems}
+                />
               }
             />
             <Route
@@ -162,15 +166,23 @@ function App() {
             />
             <Route
               path="item-shop"
-              element={<ItemShop player={fullPlayer} setPlayer={setPlayer} />}
+              element={
+                <ItemShop
+                  player={fullPlayer}
+                  addGold={addGold}
+                  addItems={addItems}
+                  updateEvents={updateEvents}
+                />
+              }
             />
             <Route
               path="docks"
               element={
                 <Docks
                   player={fullPlayer}
-                  setPlayer={setPlayer}
-                  addItems={addItems}
+                  removeItems={removeItems}
+                  updateEvents={updateEvents}
+                  addGold={addGold}
                 />
               }
             />
