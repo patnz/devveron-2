@@ -85,7 +85,7 @@ function Docks({
               </button>
             </>
           ) : (
-            <div className="location-content typerwriter">
+            <div className="docs-content typerwriter">
               <p className="player-quote">Mayor Kelly:</p>
 
               <p className="npc-quote">
@@ -122,7 +122,7 @@ function Docks({
             </div>
           )
         ) : player.inventory.includes('Millennium Falcon') ? (
-          <div className="location-content">
+          <div className="docks-content">
             <p>
               Kelly stares longingly at the Millenium Falcon Lego Set perking
               out the top of your rucksack...

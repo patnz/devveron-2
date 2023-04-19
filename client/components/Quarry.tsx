@@ -45,7 +45,7 @@ function Quarry({ player, setPlayer, addGold }: Props) {
             <p className="npc-quote">
               <span className="quote-icon">➶ </span>
               "We mine rocks here! There are plenty of pickaxes lying around the
-              place. You can keep anything you find!"
+              place. Let's see how you swing! You can keep anything you find!"
             </p>
 
             <button className="next-content-button" onClick={handleClickNext}>
