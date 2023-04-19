@@ -7,12 +7,12 @@ export function loginHandlers(io: any, socket: any) {
     getPlayer(user)
       .then((player) => {
         if (player) {
-          console.log('found')
+          // console.log('found')
           playerBroadcast(player, socket, io)
           // io.broadcast to tell other users someone's logged on also on char creation
           // & io.to this socket w/ info of other sockets
         } else {
-          console.log('sending to create a character')
+          // console.log('sending to create a character')
           io.to(socket.id).emit('do character creation')
         }
       })
@@ -25,7 +25,7 @@ export function loginHandlers(io: any, socket: any) {
   socket.on('create character', (player: PlayerInfo) => {
     addPlayer(player)
       .then((player) => {
-        console.log('character created')
+        // console.log('character created')
         playerBroadcast(player, socket, io)
       })
       .catch((err) => {
@@ -35,12 +35,12 @@ export function loginHandlers(io: any, socket: any) {
   })
 
   socket.on('disconnect', () => {
-    console.log('leaving')
-    console.log(socket.data)
+    // console.log('leaving')
+    // console.log(socket.data)
     if (socket.data.char_name) {
       updatePlayer(socket.data)
         .then(() => {
-          console.log('character logged out')
+          // console.log('character logged out')
           socket.broadcast.emit('player logged out', {
             id: socket.id,
             name: socket.data.char_name,
@@ -55,7 +55,7 @@ export function loginHandlers(io: any, socket: any) {
   })
 
   socket.on('logging out', () => {
-    console.log('bye')
+    // console.log('bye')
     updatePlayer(socket.data)
       .then(() => {
         console.log('character logged out')

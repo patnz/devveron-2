@@ -47,7 +47,6 @@ function App() {
   }, [])
 
   useEffect(() => {
-    console.log(user)
     if (user) {
       socket.emit('get player data', user.sub)
     }
@@ -61,7 +60,7 @@ function App() {
     setQuests(player.progress.quests)
     setEvents(player.progress.events)
     setGold(player.gold)
-    console.log('got player data, sending to location...')
+    // console.log('got player data, sending to location...')
     nav(`/loc/${player.location}`)
   })
   socket.on('do character creation', () => {
