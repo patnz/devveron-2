@@ -4,7 +4,6 @@ import { ChangeEvent, useCallback, useState } from 'react'
 
 interface Props {
   player: Player
-  setPlayer: (player: Player) => void
   addGold: (gold: number) => void
   removeItems: (items: string[]) => void
   updateEvents: (events: Record<string, boolean>) => void
@@ -12,7 +11,7 @@ interface Props {
 
 function Docks({
   player,
-  setPlayer,
+
   removeItems,
   updateEvents,
   addGold,
