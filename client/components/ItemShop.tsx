@@ -20,7 +20,7 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
   const getZeldaSword = useCallback(() => {
     addItems(['Zelda Sword'])
 
-    addGold(-69)
+    addGold(-50)
   }, [addItems, addGold])
 
   const getCurlyBrace = useCallback(() => {
@@ -53,13 +53,14 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
           Welcome to the Redux Store! We GET and SEND things from our warehouse
           and wait for things to get to us through our teams of ACTIONS and
           REDUCERS so that you do not have to wait! Come query our list items!
+          Click to go to: <br></br>
           <Link to="/loc/town-square" className="link">
             Town Square
           </Link>
           .
         </p>
         {player.inventory.includes('Tibetan Singing Bowl') ? (
-          <p>You already have a Tibetan Singing Bowl</p>
+          <p>You have an annoying Tibetan Singing Bowl</p>
         ) : (
           <button onClick={getTibetanSingingBowl}>
             Buy that annoying Tibetan Singing Bowl the Facilitators use in the
@@ -68,13 +69,13 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
         )}
 
         {player.inventory.includes('Curly Brace') ? (
-          <p>You already have a Curly Brace fool</p>
+          <p>You have a Curly Brace in your inventory</p>
         ) : (
           <button onClick={getCurlyBrace}>Buy Curly Brace for 50 gold</button>
         )}
 
         {player.inventory.includes('Healing Water') ? (
-          <p>You already have Healing Water</p>
+          <p>You have Healing Water in your inventory</p>
         ) : (
           <button onClick={getHealingWater}>
             Buy Healing Water for 5 gold
@@ -82,7 +83,7 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
         )}
 
         {player.inventory.includes('Explosives') ? (
-          <p>You already have Explosives</p>
+          <p>You Explosives in your Inventory</p>
         ) : (
           <button onClick={getExplosives}>Buy Explosives for 30 gold</button>
         )}
@@ -95,7 +96,7 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
           <p>You already have the Zelda Sword</p>
         ) : (
           <button onClick={getZeldaSword}>
-            Get the Zelda Sword for 69 gold
+            Get the Zelda Sword for fitty gold
           </button>
         )}
       </div>
