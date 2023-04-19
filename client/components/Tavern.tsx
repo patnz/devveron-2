@@ -20,7 +20,7 @@ function Tavern({ player, removeItems, addGold, updateEvents }: Props) {
       <div className="location-name">
         <h2>The Wild Wanderer Tavern</h2>
       </div>
-      <div className="location-content-container typewriter">
+      <div className="location-content-container typewriter docs-content">
         <p>
           You walk into a brightly lit Tavern, there is a warm fire in the
           hearth and drinks flow freely. The [Barkeeper] looks your way and
@@ -32,9 +32,6 @@ function Tavern({ player, removeItems, addGold, updateEvents }: Props) {
             Town Square
           </Link>
           .
-          <Link to="/loc/itemshop" className="link">
-            Item Shop
-          </Link>
         </p>
         <p>
           Further down along you see a straggly Pirate who looks like he has
