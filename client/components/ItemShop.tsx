@@ -62,7 +62,11 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
         {player.inventory.includes('Tibetan Singing Bowl') ? (
           <p>You have an annoying Tibetan Singing Bowl</p>
         ) : (
-          <button className="shop-text-button" onClick={getTibetanSingingBowl}>
+          <button
+            className="shop-text-button"
+            onClick={getTibetanSingingBowl}
+            disabled={player.gold < 120}
+          >
             Buy that annoying Tibetan Singing Bowl the Facilitators use in the
             morning for 120 gold
           </button>
@@ -71,7 +75,11 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
         {player.inventory.includes('Curly Brace') ? (
           <p>You have a Curly Brace in your inventory</p>
         ) : (
-          <button className="shop-text-button" onClick={getCurlyBrace}>
+          <button
+            className="shop-text-button"
+            onClick={getCurlyBrace}
+            disabled={player.gold < 50}
+          >
             Buy Curly Brace for 50 gold
           </button>
         )}
@@ -79,7 +87,11 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
         {player.inventory.includes('Healing Water') ? (
           <p>You have Healing Water in your inventory</p>
         ) : (
-          <button className="shop-text-button" onClick={getHealingWater}>
+          <button
+            className="shop-text-button"
+            onClick={getHealingWater}
+            disabled={player.gold < 5}
+          >
             Buy Healing Water for 5 gold
           </button>
         )}
@@ -87,7 +99,11 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
         {player.inventory.includes('Explosives') ? (
           <p>You Explosives in your Inventory</p>
         ) : (
-          <button className="shop-text-button" onClick={getExplosives}>
+          <button
+            className="shop-text-button"
+            onClick={getExplosives}
+            disabled={player.gold < 30}
+          >
             Buy Explosives for 30 gold
           </button>
         )}
@@ -95,6 +111,7 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
         <button
           className="shop-text-button"
           onClick={donateMoneyToChurchOfWhare}
+          disabled={player.gold < 5}
         >
           Donate 5 gold to the Church{' '}
         </button>
@@ -102,7 +119,11 @@ function ItemShop({ player, addGold, addItems, updateEvents }: Props) {
         {player.inventory.includes('Zelda Sword') ? (
           <p>You already have the Zelda Sword</p>
         ) : (
-          <button className="shop-text-button" onClick={getZeldaSword}>
+          <button
+            className="shop-text-button"
+            onClick={getZeldaSword}
+            disabled={player.gold < 50}
+          >
             Get the Zelda Sword for fitty gold
           </button>
         )}
