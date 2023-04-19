@@ -20,6 +20,7 @@ function Docks({
     removeItems(['Millennium Falcon'])
     addGold(40)
     updateEvents({ gaveFalcon: true })
+    setContentStage(1)
   }, [])
 
   const [contentStage, setContentStage] = useState(0)
@@ -44,7 +45,7 @@ function Docks({
         <h2>The Docks of Devveron</h2>
       </div>
       <div className="location-content-container">
-        {contentStage === 0 && (
+        {contentStage === 0 ? (
           <div className="location-content typerwriter">
             <p className="docks-content-1 typewriter">
               You arrive at the Docks and are struck by the deep blue of the
@@ -66,62 +67,68 @@ function Docks({
               ⮕
             </button>
           </div>
-        )}
-        {contentStage === 1 && (
-          <div className="location-content typerwriter">
-            <p className="player-quote">Mayor Kelly:</p>
+        ) : contentStage === 1 ? (
+          player.progress.events.gaveFalcon ? (
+            <>
+              <div className="location-content typerwriter">
+                <p>
+                  Kelly sits in the corner busy playing with her Millenium
+                  Falcon Lego Set. Maybe you should head back to the{' '}
+                  <Link to="/loc/town-square" className="link">
+                    Town Square
+                  </Link>
+                  .
+                </p>
+              </div>
+              <button className="back-content-button" onClick={handleClickBack}>
+                ⬅
+              </button>
+            </>
+          ) : (
+            <div className="location-content typerwriter">
+              <p className="player-quote">Mayor Kelly:</p>
 
-            <p className="npc-quote">
-              <span className="quote-icon">➶ </span>"Hello Traveller and welcome
-              to the Docks! The route to get here must have been easy to GET to.
-              We are querying with contractors about building a newer route here
-              so that the people of Devveron can get things from the dock a lot
-              more faster and efficiently."
+              <p className="npc-quote">
+                <span className="quote-icon">➶ </span>"Hello Traveller and
+                welcome to the Docks! The route to get here must have been easy
+                to GET to. We are querying with contractors about building a
+                newer route here so that the people of Devveron can get things
+                from the dock a lot more faster and efficiently."
+              </p>
+              <p className="npc-quote">
+                <span className="quote-icon">➶ </span> "By chance, were you sent
+                here by Pat the Street Urchin? I am wondering whether you have
+                an item I had stashed at Pat's, the mythical Lego set of the
+                Millenium Falcon?..”
+              </p>
+              <button className="back-content-button" onClick={handleClickBack}>
+                ⬅
+              </button>
+              <button className="next-content-button" onClick={handleClickNext}>
+                ⮕
+              </button>
+            </div>
+          )
+        ) : player.inventory.includes('Millennium Falcon') ? (
+          <div className="location-content">
+            <p>
+              Kelly stares longingly at the Millenium Falcon Lego Set perking
+              out the top of your rucksack...
             </p>
-            <p className="npc-quote">
-              <span className="quote-icon">➶ </span> "By chance, were you sent
-              here by Pat the Street Urchin? I am wondering whether you have an
-              item I had stashed at Pat's, the mythical Lego set of the
-              Millenium Falcon?..”
-            </p>
+            <button className="action-text-bustton" onClick={giveFalcon}>
+              Hand over Lego
+            </button>
             <button className="back-content-button" onClick={handleClickBack}>
               ⬅
             </button>
-            <button className="next-content-button" onClick={handleClickNext}>
-              ⮕
-            </button>
           </div>
-        )}
-
-        {contentStage === 2 && (
+        ) : (
           <div className="location-content">
-            {player.progress.events.gaveFalcon ? (
-              <>
-                <p>You have found Kelly!</p>
-                <button
-                  className="back-content-button"
-                  onClick={handleClickBack}
-                >
-                  ⬅
-                </button>
-              </>
-            ) : (
-              <>
-                <p>
-                  Kelly stares longingly at the Millenium Falcon Lego Set
-                  perking out the top of your rucksack...
-                </p>
-                <button className="action-text-button" onClick={giveFalcon}>
-                  Hand over Lego
-                </button>
-                <button
-                  className="back-content-button"
-                  onClick={handleClickBack}
-                >
-                  ⬅
-                </button>
-              </>
-            )}
+            <p>Kelly seems dissapointed in you and walks off in a huff.</p>
+
+            <button className="back-content-button" onClick={handleClickBack}>
+              ⬅
+            </button>
           </div>
         )}
       </div>
