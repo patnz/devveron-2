@@ -4,7 +4,6 @@ import { useCallback } from 'react'
 
 interface Props {
   player: Player
-  setPlayer: (player: Player) => void
   addGold: (gold: number) => void
   addItems: (item: string[]) => void
   updateEvents: (events: Record<string, boolean>) => void
