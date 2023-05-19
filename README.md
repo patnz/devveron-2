@@ -13,6 +13,7 @@ This is currently a working prototype.
 - Websockets
 - Express
 - SQLite
+- SCSS
 
 ## User Stories
 
