@@ -1,6 +1,6 @@
 # Devveron 2.0
 
-This is a text-based multiplayer game built in a week using React and Websocket, testing our technical skills and working collaboratively on a larger project. The socket.io library enabled us to keep track of global state on the client side. Using Websocket tech as a creative solution to keeping track of the current state of gameplay in place of something like Redux. This challenged us to think up creative ways of passing functions and data between components, which in turn reduced the frequency of database CRUD functions required.
+This is a text-based multiplayer game built in a week using React and Websockets, testing our technical skills and working collaboratively on a larger project. The socket.io library enabled us to keep track of global state on the client side. Using Websocket tech as a creative solution to keeping track of the current state of gameplay in place of something like Redux. This challenged us to think up creative ways of passing functions and data between components, which in turn reduced the frequency of database CRUD functions required.
 
 This is currently a working prototype.
 
